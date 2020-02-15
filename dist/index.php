@@ -28,6 +28,7 @@
 	<div id="intro">
 		<div id="particles" class="particles">
 		  <div class="particules-container"></div>
+			<svg id="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"/>
 		</div>
 		<div class="button-intro">
 			<button type="button" name="button" id="start-button">Commencer</button>

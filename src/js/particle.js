@@ -1,4 +1,5 @@
 import gsap from "gsap";
+require('jquery');
 import { map, initMap } from "./map.js"
 
 var getRandom = function(min, max) {
@@ -32,72 +33,57 @@ var durationMax = 20;
 var startDelay = 0;
 
 var createParticles = function() {
-  for (var i = 0, div; i < particleQuantity; i++) {
-    div = document.createElement("div");
-    div.className = "particle";
-    container.appendChild(div);
-    gsap.set(div, {
-      x: getRandom(0, emitterWidth),
-      y: getRandom(-emitterHeight, emitterHeight / 2),
-      opacity: 0.4,
-      scale: getRandom(particleSizeMin, particleSizeMax) + 0.025,
-      backgroundColor: particleColor()
-    });
-    particleArray.push(div);
+  /* a Pen by Diaco m.lotfollahi  : https://diacodesign.com */
+
+  gsap.set("img",{xPercent:"-50%",yPercent:"-50%"})
+
+  var svgNS = "http://www.w3.org/2000/svg";
+
+  var total = 70;
+  let mySVG = document.getElementById("mySVG")
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  // var w = mySVG.width();
+  // var h = mySVG.height();
+
+  for (let i=0; i<total; i++){
+  var myCircle = document.createElementNS(svgNS,"circle");
+  myCircle.setAttributeNS(null,"class","dot");
+  myCircle.setAttributeNS(null,"r",5);
+  mySVG.appendChild(myCircle);
+  gsap.set($(".dot")[i],{
+    x:Random(w),
+    y:0 ,
+    scale:getRandom(particleSizeMin, particleSizeMax) + 0.025,
+    fill:particleColor});
+   animm($(".dot")[i]);
+   }
+
+   function animm(elm){
+   gsap.to(elm,Random(5)+3,{
+     y:h,ease:"power1.inOut",repeat:-1, delay:-5
+   });
+   gsap.to(elm,Random(5)+1,{
+     x:'+=430', repeat:-1,yoyo:false,ease:"sine.inOut"
+   })
+   gsap.to(elm,Random(1)+0.5,{
+     fill:"rgba(0,0,0,0)",repeat:-1,yoyo:true,ease:"sine.inOut"
+   })
+   };
+
+  function Random (max) {
+    return Math.random()*max;
   }
-};
 
-var tweenParticles = function() {
-  /*
-  let tl = gsap.timeline({repeat: -1, repeatDelay: 0.5});
-  tl.to(particleArray, {
-    delay: startDelay,
-    duration: getRandom(durationMin, durationMax) + 0.1,
-    y: emitterHeight,
-    ease: "power1.inOut",
-    repeat: -1,
-    stagger: .1
-  }).play();
-  */
-
-  particleArray.map((particle, index) => {
-  // let tl = gsap.tween(); //create the timeline
-  let tl = gsap.timeline(); //create the timeline
-    tl.to(particle, {
-      delay: startDelay,
-      duration: getRandom(durationMin, durationMax) + 0.1,
-      y: emitterHeight,
-      ease: "power1.inOut",
-      repeat:101
-    }).play();
-    tl.to(particle, {
-      x: "+=" + getRandom(windMin, windMax) + 0.1,
-      duration: getRandom(windDurationMin, windDurationMax) + 0.1,
-      repeat: 10,
-      yoyo: true,
-      ease: "sine.inOut"
-    }).play();
-    tl.to(particle, {
-      opacity: 1,
-      duration: getRandom(0, 1) + 0.5,
-      repeat: 10,
-      yoyo: true,
-      ease: "sine.inOut"
-    }).play();
-  });
+  /* a Pen by Diaco m.lotfollahi  : https://diacodesign.com */
 };
 
 // create particles
 createParticles();
 
-// tween particles
-tweenParticles();
-
-// fade in particles on start
-
 document.getElementById("start-button").addEventListener('click', function(){
   let node = document.getElementById("intro");
-  // initMap();
+  initMap();
   var tween = gsap.to(node, 2, { delay: 2, opacity: 0, paused: true, onComplete: killThemAll })// .call(killThemAll)
   tween.play();
 }, false)
