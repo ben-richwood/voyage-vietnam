@@ -18,6 +18,7 @@ module.exports = (env, options) => {
       // watch: true,
       output: {
         path: path + "dist/js",
+        chunkFilename: "bundle.js?v=[contenthash]",
         filename: "bundle.js?v=[contenthash]"
       },
       optimization: {

@@ -10,13 +10,13 @@
 
 	<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
 	<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
+	<link rel="stylesheet" href="./css/basic.css">
 	<style>
 	body { margin: 0; padding: 0; }
 	#map { position: absolute; top: 0; bottom: 0; width: 100%; height:100%; };
 </style>
 
 	<meta name="viewport" content="width = 1050, user-scalable = no" />
-	<link rel="stylesheet" href="./css/basic.css">
 	<!-- <script type="text/javascript" src="./js/jquery.min.1.7.js"></script> -->
 	<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 	<!-- <script type="text/javascript" src="./js/modernizr.2.5.3.min.js"></script> -->
@@ -24,6 +24,15 @@
 	<script type="text/javascript" src="./js/bundle.js" defer></script>
 </head>
 <body>
+
+	<div id="intro">
+		<div id="particles" class="particles">
+		  <div style="width:100%;height:100%;position:absolute;background:black;top:0;left:0;z-index:-1"></div>
+		</div>
+		<div class="button-intro">
+			<button type="button" name="button" id="start-button">Commencer</button>
+		</div>
+	</div>
 
 	<div id="map"></div>
 

@@ -1,13 +1,12 @@
 import gsap from "gsap";
-import $ from "jquery";
-// require("imports-loader?$=jquery!./example.js");
-// var modernizr = require("modernizr");
-// var modernizr = require('./modernizr.2.5.3.min.js');
-// var modernizr = require("imports-loader?this=>window!./modernizr.2.5.3.min.js");
-// var modernizr = require("imports-loader?this=>window!modernizr");
-window.$=window.jQuery= $;
+window.$ = window.jQuery = require('jquery');
+// require('jquery-ui/ui/widgets/draggable');
+import displace from 'displacejs';
+
 require("./turn.min.js");
-// require("./turn.html4.min.js");
+
+require("./particle.js");
+import { map, initMap, locations } from "./map.js"
 
 const blackScreen = document.getElementById("blackScreen");
 const cardDeck = document.getElementById("cardDeck");
@@ -16,90 +15,6 @@ blackScreen.addEventListener("click", function(){
 	console.log("listen");
 	blackScreen.style.display = "none";
 }, false);
-
-const locations = {
-	'type': 'FeatureCollection',
-	'features': [
-		{
-			'type': 'Feature',
-			'properties': {
-				'id': 4,
-				'name': "Hanoi",
-				'camera': {
-					'zoom': 12.21,
-					'pitch': 50,
-					'speed': 1.2
-				},
-				"photos": [
-					"1.jpg",
-					"2.jpg"
-				]
-			},
-			'geometry': {
-				'type': 'Point',
-				'coordinates': [105.854504, 21.033133]
-			}
-		}, {
-			'type': 'Feature',
-			'properties': {
-				'id': 6,
-				'name': "Ninh Binh",
-				'camera': {
-					'bearing': -8.9,
-					'zoom': 11.68,
-					'speed': 1.2
-				},
-				"photos": [
-					"1.jpg",
-					"2.jpg"
-				]
-			},
-			"geometry": {
-				'type': 'Point',
-				'coordinates': [105.931002, 20.237875],
-			}
-		}, {
-			'type': 'Feature',
-			'properties': {
-				'id': 10,
-				'name': "Ha Giang",
-				'camera': {
-					'bearing': 25.3,
-					'zoom': 11.5,
-					'speed': 1.2
-				},
-				"photos": [
-					"1.jpg",
-					"2.jpg"
-				]
-			},
-			"geometry": {
-				'type': 'Point',
-				'coordinates': [104.985588, 22.82633],
-			}
-		}, {
-			'type': 'Feature',
-			'properties': {
-				'id': 14,
-				'name': "Dong Van",
-				'camera': {
-					'bearing': 25.3,
-					'zoom': 11.5,
-					'speed': 1.2
-				},
-				"photos": [
-					"1.jpg",
-					"2.jpg"
-				]
-			},
-			"geometry": {
-				'type': 'Point',
-				'coordinates': [105.362378, 23.278154]
-			}
-		}
-	]
-};
-
 
 let intervalListener;
 
@@ -142,6 +57,16 @@ tocPageButton.addEventListener('click', function(){
   goTo(3);
 }, false);
 
+// Autoloading function to add the listeners:
+var elem = document.getElementsByClassName("button-images");
+
+for (var i = 0; i < elem.length; i += 2) {
+    (function () {
+      var cardNumber = elem[i].getAttribute("data-card");
+      elem[i].addEventListener("click", function() { spreadPhotos(cardNumber); }, false);
+    }()); // immediate invocation
+}
+
 // Get the element, add a click listener...
 document.getElementById("page-list").addEventListener("click", function(e) {
 	// e.target is the clicked element!
@@ -162,7 +87,7 @@ function nextPage() {
 }
 function prevPage() {
 	let currentPage = $(".flipbook").turn("page")
-	if (currentPage % 2 != 0) currentPage++;
+	if (currentPage % 2 != 0) currentPage--;
 	if (currentPage > 4) goTo(currentPage - 2)
 	// $(".flipbook").turn("previous");
 }
@@ -175,8 +100,11 @@ function spreadPhotos (f) {
 	blackScreen.style.display = "block";
 	cardDeck.style.display = "block";
 	stopMapAnimation();
-	let loc = locations.features.find(e => e.properties.id === f);
-	console.log("loc", loc);
+  console.log(parseInt(f, 10), f);
+	let loc = locations.features.find(e => e.properties.id == parseInt(f, 10));
+
+	console.log("loc", parseInt(f), loc);
+  if (loc === undefined) return;
 	const photos = [...loc.properties.photos];
 	while (cardDeck.firstChild) {
     cardDeck.removeChild(cardDeck.firstChild);
@@ -185,11 +113,12 @@ function spreadPhotos (f) {
 		const card = document.createElement( 'div' );
 		card.className = 'card';
 		const img = document.createElement( 'img' );
-		img.src = "./pages/" + photo
+		img.src = "./img/pics/" + photo
 		card.appendChild( img );
 		cardDeck.appendChild(card);
+    displace(card);
 	})
-	var tl = new gsap.TimelineLite(),
+	var tl = new gsap.timeline(),
     elements = $(".card"),
     randomGap = .2, //use whatever you want here to space things out more/less
     i;
@@ -204,9 +133,6 @@ function spreadPhotos (f) {
 				force3D: true
 			}, Math.random() * randomGap);
 	}
-	$( function() {
-		 $( ".card" ).draggable();
-	 } );
 }
 
 	$(document).keydown(function(e){
@@ -235,106 +161,42 @@ yepnope({
 
 loadApp();
 
-	mapboxgl.accessToken = 'pk.eyJ1IjoicmljaHdvb2QiLCJhIjoiY2p0eWlzdG9oMDE3cDRlcDlqOWVxbmU1MiJ9.Xx8OH5XyqXiTgUNGnsn1Qg';
-	var map = new mapboxgl.Map({
-	container: 'map',
-	// style: 'mapbox://styles/richwood/cjcrz5zbq1tkl2rpdctydxeqf',
-	style: 'mapbox://styles/richwood/cjl2gj54g0zdg2sqn56voruef',
-	center: [105.854504, 21.033133],
-	maxZoom: 16,
-	pitch: 30,
-	minZoom: 7,
-	zoom: 9.68
+function loadMap(){
+  initMap();
+}
+
+function changeLoadingText(index) {
+	if (index + 1 < locations.length){
+		index++;
+		playback(index);
+	}
+	window.clearInterval(intervalListener);
+}
+
+function stopMapAnimation(){
+	window.clearInterval(intervalListener);
+}
+
+function highlightBorough(code) {
+	// Only show the polygon feature that cooresponds to `borocode` in the data
+	map.setFilter('highlight', ['==', 'borocode', code]);
+}
+
+function playback(index) {
+	// $('.flipbook').turn('next');
+	// highlightBorough(locations[index].id ? locations[index].id : '');
+	let camera = {
+		center: locations.features[index].geometry.coordinates,
+		...locations.features[index].properties.camera
+	}
+	map.flyTo(camera);
+
+	/*
+	map.once('moveend', function() {
+		// Duration the slide is on screen after interaction
+		intervalListener = self.setInterval(function(){
+			changeLoadingText(index)
+		}, 5000);
 	});
-
-	map["keyboard"].disable();
-	map["dragRotate"].disable();
-	map["doubleClickZoom"].disable();
-
-	function changeLoadingText(index) {
-		if (index + 1 < locations.length){
-			index++;
-			playback(index);
-		}
-		window.clearInterval(intervalListener);
-	}
-
-	function stopMapAnimation(){
-		window.clearInterval(intervalListener);
-	}
-
-	function highlightBorough(code) {
-		// Only show the polygon feature that cooresponds to `borocode` in the data
-		map.setFilter('highlight', ['==', 'borocode', code]);
-	}
-
-	function playback(index) {
-		// $('.flipbook').turn('next');
-		// highlightBorough(locations[index].id ? locations[index].id : '');
-		let camera = {
-			center: locations.features[index].geometry.coordinates,
-			...locations.features[index].properties.camera
-		}
-		map.flyTo(camera);
-
-		/*
-		map.once('moveend', function() {
-			// Duration the slide is on screen after interaction
-			intervalListener = self.setInterval(function(){
-				changeLoadingText(index)
-			}, 5000);
-		});
-		*/
-	}
-
-	// add markers to map
-	locations.features.forEach(function(marker) {
-		console.log(marker);
-		// create a DOM element for the marker
-		let el = document.createElement('div');
-		let cityName = document.createElement('div');
-		cityName.innerHTML = marker.properties.name
-		el.className = 'marker';
-		let img = document.createElement('img');
-		img.style.width = '40px';
-		img.style.height = '30px';
-		img.src = "./img/city_marker.svg"
-		el.appendChild(img)
-		el.appendChild(cityName)
-
-		el.addEventListener('click', function() {
-			// window.alert(marker.properties.message);
-			// map.flyTo(marker.camera)
-			goTo(marker.properties.id)
-		});
-
-		// add marker to map
-		new mapboxgl.Marker(el)
-		.setLngLat(marker.geometry.coordinates)
-		.addTo(map);
-	});
-
-	map.on('load', function() {
-		playback(0);
-	});
-	// 	map.addLayer(
-	// 	{
-	// 	'id': 'highlight',
-	// 	'type': 'fill',
-	// 	'source': {
-	// 	'type': 'vector',
-	// 	'url': 'mapbox://mapbox.8ibmsn6u'
-	// 	},
-	// 	'source-layer': 'original',
-	// 	'paint': {
-	// 	'fill-color': '#fd6b50',
-	// 	'fill-opacity': 0.25
-	// 	},
-	// 	'filter': ['==', 'borocode', '']
-	// 	},
-	// 	'settlement-subdivision-label'
-	// 	); // Place polygon under the neighborhood labels.
-	//
-	// 	// Start the playback animation for each borough
-	// 	playback(0);
-	// });
+	*/
+}

@@ -6,7 +6,7 @@
     <p class="capital">Hanoi, le 6 juin 2018 </p>
     <p>Nous voilà à Hanoi, au Soft Pillow Hostel. On passe la matinée à chercher des motos, en Grab ou à pied. On finit par trouver un shop dans le vieux quartier ; une fois les papier remplis, nous partons nous entrainer avec une motos dans les rues plus loin. On rentre à l'hôtel avec les 2 motos, et descendons quelques bières pour alimenter les discussions. On se lève de bonne heure pour visiter Hanoi plus en détail. Le lac Hô Tây, le mausolée d'Hô Chi Minh, la cité impériale de Thang Long et un temple taoïste sont au programme.</p>
     <p>On retrouve Victoria (la soeur de Léa) autour d'un café. Nous quittons Hanoi à 18h et traçons en direction de Ninh Binh, 100km plus bas. On arrive dans le noir complet dans un homestay perdu entre les pains de calcaire.</p>
-    <button onClick="spreadPhotos(2)">Voir les photos</button>
+    <button class="button-images" data-card="4">Voir les photos</button>
   </div>
 </div>
 
@@ -19,7 +19,7 @@
     <p class="capital">Valley, Ninh Binh</p>
     <p>On ne découvre le décor que le lendemain matin au réveil. On tourne sur le lac en companie de Amélie, une amie fraîchement rencontrés à Hanoi avec qui on a fait la route. En part alors pour une ballade en vélo. On se pose pour escalader un pain, et on trouve notre chemin jusqu'à un long escalier de pierre en haut duquel culmine un dragon de pierre.</p>
     <p>Cap sur Tam Coc, toujours armés de nos vélos. On se lance dans la ,ytique ballade en bateau, dont les cours d'eau passe sous les blocs de pain par endroit. Retour en vélo dans le décor qui s'assombrit avec la nuit.</p>
-    <button onClick="spreadPhotos(4)">Voir les photos</button>
+    <button class="button-images" data-card="6">Voir les photos</button>
   </div>
 </div>
 
