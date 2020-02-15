@@ -27,7 +27,7 @@
 
 	<div id="intro">
 		<div id="particles" class="particles">
-		  <div style="width:100%;height:100%;position:absolute;background:black;top:0;left:0;z-index:-1"></div>
+		  <div class="particules-container"></div>
 		</div>
 		<div class="button-intro">
 			<button type="button" name="button" id="start-button">Commencer</button>
