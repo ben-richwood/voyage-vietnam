@@ -1,0 +1,26 @@
+{
+  "name": "max_vietnam",
+  "version": "1.0.0",
+  "description": "Souvenirs de voyage avec Max au Vietnam en 2018",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode=development",
+    "prod": "webpack --mode=production"
+  },
+  "author": "Richwood",
+  "license": "ISC",
+  "dependencies": {
+    "gsap": "^3.1.1",
+    "imports-loader": "^0.8.0",
+    "jquery": "^3.4.1",
+    "jquery-ui": "^1.12.1",
+    "modernizr": "^3.9.0"
+  },
+  "devDependencies": {
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-modernizr-loader": "^5.0.0"
+  }
+}
