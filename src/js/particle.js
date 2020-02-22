@@ -84,14 +84,6 @@ var createParticles = function() {
 const carnet = document.getElementById("carnet");
 var music = new Audio('./uncharted_320k.mp3');
 
-createParticles()
-
-document.getElementById("start-button").addEventListener('click', function(){
-  let node = document.getElementById("intro");
-  initMap();
-  var tween = gsap.to(node, 2, { delay: 2, opacity: 0, paused: true, onComplete: killThemAll })// .call(killThemAll)
-  tween.play();
-}, false)
 
 function killThemAll() {
   gsap.killTweensOf(".particle");
@@ -105,29 +97,69 @@ function addClassToMainTitle() {
   document.getElementById("main-title").className = "show-menu";
 }
 
+// createParticles()
 function launchMusic() {
   music.play()
 }
 
 function animCarnet(){
   let carnetContainer = document.getElementById("carnet--container");
-  carnetContainer.querySelector(".bg").classList.add("anim");
+  document.querySelector(".bg").classList.add("anim");
   carnetContainer.querySelector(".notebook__left-page").classList.add("anim");
 }
+let isPaused = false;
+const masterTimeline = gsap.timeline();
+const tw = window.innerWidth
 
-document.querySelector("#start-intro button").addEventListener('click', launchEx, false);
+document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
 
-function launchEx() {
-  const masterTimeline = gsap.timeline();
-  masterTimeline.set(carnet, {scale: 1.4})
-  masterTimeline.to("#start-intro", {duration: 0, delay: 0, opacity: 0, onComplete: animCarnet})
-  .to(carnet, {duration: .4, opacity: 1})
-  .to("#intro", {duration: .5, onComplete: launchMusic})
-  .to("#button-intro", {duration: .3, delay:.5, opacity: 1})
-  // .to(carnet, {duration: 4, delay: .2, xPercent: "-=10", yPercent: "-=40", scale: 1})
-  .to('#main-title', {duration: 1, delay: -2, onStart: addClassToMainTitle})
-  // .to(carnet, {duration: 4, delay: .2, xPercent: "-=40", yPercent: "+=30"})
-  .to("#intro-dates", {duration: 4, delay: -4, xPercent: "-=70", opacity: 1})
+document.querySelector("#skip-intro").addEventListener('click', launchMap, false);
+document.getElementById("start-button").addEventListener('click', launchMap, false)
+document.getElementById("pauseButton").addEventListener('click', function(){
+  isPaused = !isPaused;
+  if (isPaused) {
+    masterTimeline.pause();
+    music.pause()
+  } else {
+    masterTimeline.play();
+    music.play()
+  }
+}, false)
+
+function launchIntro() {
+  masterTimeline.set(carnet, {scale: 1, z: 550, x: 0.55*tw, yPercent: 90, filter: "blur(6px)"})
+  // .set(".bg", {scale: 1, z: 600})
+
+  masterTimeline.to("#start-intro", {duration: 1, delay: 0, opacity: 0, onComplete: animCarnet})
+    .to("#start-intro", {delay: .4, duration: .2, onComplete: launchMusic})
+    .to(carnet, {duration: 1.3, delay: .8, filter: "blur(0px)", ease: "power1.out"})
+    .to(carnet, {duration: 3, delay: -2.3, yPercent: "-=20", xPercent: "-=5", z: "-=50", ease: "power1.out"})
+    .to('#main-title', {duration: 1, delay: .4, onStart: addClassToMainTitle})
+    .to(carnet, {duration: 5, delay: -2, z: 400, rotate: "-4deg", xPercent: "45", yPercent: "25", ease: "power2.inOut"})
+    .to(carnet, {duration: 5, delay: 0, z: 400, rotate: "3deg", xPercent: "5", yPercent: "60", ease: "power1.inOut"})
+    .to("#intro-dates", {duration: 0, delay: -1, onComplete: function(){
+      document.getElementById("intro-dates").classList.add("anim");
+    }})
+    // .to("#intro-dates", {duration: .5, delay: 0, xPercent: "1", opacity: 1})
+    .to(carnet, {duration: 6, delay: -0.5, z: 450, rotate: "-7deg", xPercent: "-=10", yPercent: "-=40", ease: "power2.inOut"})
+
+    // +xPercent => vers la gauche
+    // -xPercent => vers la droite
+
+    // +yPercent => remonte
+    // -yPercent => redescend
+
+    // .to("#intro", {duration: .5})
+    // .to("#button-intro", {duration: .3, delay:.5, opacity: 1})
+    // .to(carnet, {duration: 4, delay: .2, xPercent: "-=10", yPercent: "-=40", scale: 1})
+    // .to(carnet, {duration: 4, delay: .2, xPercent: "-=40", yPercent: "+=30"})
+}
+
+function launchMap() {
+  let node = document.getElementById("intro");
+  initMap();
+  var tween = gsap.to(node, 2, { delay: 2, opacity: 0, paused: true, onComplete: killThemAll })// .call(killThemAll)
+  tween.play();
 }
 
 

@@ -8,6 +8,7 @@ body{
 	font-family: 'Kalam', cursive;
 	height:100vh;
 	position:relative;
+	width: 100%;
 }
 
 h1{
@@ -19,6 +20,7 @@ button{
 	border: 5px solid rgba(0, 0, 0, 0.3);
 	font-family: 'Permanent Marker', cursive;
 	font-size: 1.3rem;
+	display: block;
 	/* z-index: 101; */
 }
 button:hover{
@@ -315,9 +317,10 @@ button:hover{
 /* REBOOK Effect */
 #main-title{
 	position: absolute;
-	width: 50vw;
-	height: 29vw;
-	bottom: -10%;
+	max-width: 70%;
+	width: 28vw;
+	height: 16vw;
+	bottom: 13%;
 	left: 50%;
 	z-index: 200;
 	/* transform: translate(-50%, -50%); */
@@ -357,6 +360,22 @@ button:hover{
   -webkit-animation: mask-playzero 2.5s 0s steps(29) 1 forwards;
 }
 
+.anim .present{
+	position: relative;
+	-webkit-mask: url(../img/sketch-mask.png);
+	-webkit-mask-size: 3000% 100%;
+  -webkit-animation: mask-playzero 2.5s 1.6s steps(29) 1 forwards;
+}
+
+.anim .present:before{
+	content: "present";
+	/* height: 100%; */
+  width: 100%;
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+}
+
 .show-menu #encima:before{
   content: '';
   background: url(../img/main_title.png) 50% 50% / contain no-repeat;
@@ -386,6 +405,22 @@ button:hover{
 	  mask-position: 100% 0;
 	}
 }
+@keyframes mask-playzero-reverse {
+	from {
+		-webkit-mask-position: 100% 0;
+		-ms-mask-position: 100% 0;
+		-moz-mask-position: 100% 0;
+		-o-mask-position: 100% 0;
+		mask-position: 100% 0;
+	}
+  to {
+    -webkit-mask-position: 0 0;
+    -ms-mask-position: 0 0;
+    -moz-mask-position: 0 0;
+    -o-mask-position: 0 0;
+    mask-position: 0 0;
+	}
+}
 
 #start-intro{
 	width: 100%;
@@ -393,43 +428,58 @@ button:hover{
 	display:flex;
 	align-items: center;
 	position: absolute;
-	z-index: 201;
+	z-index: 202;
 	justify-content: center;
 	/* pointer-events: none; */
+	flex-direction: column;
+	transform-style: preserve-3d;
+	perspective: 5em;
+}
+
+#start-intro-button {
+	margin-bottom: 1.4rem;
+}
+
+#skip-intro{
+	color: white;
 }
 
 #carnet{
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	/* overflow: hidden; */
-	opacity: 0;
+	top: 0;
+	transform-origin: 0 0;
+	left:0;
+	opacity: 1;
 	z-index: 99;
 	pointer-events: none;
 }
 
 #carnet #carnet--container{
 	position: relative;
-	width: 100%;
-	height: 100%;
+	width: 69.6vw; /* 1336px; */
+	height: 48.7vw; /* 935px; */
+	/* transform-origin: 0 0; */
 	top: 0;
 	left: 0;
+	background: black url(../img/notebook_bg02.jpg) 0 0 / contain no-repeat;
+	display: flex;
 }
 
-#carnet .bg{
+.bg{
 	/* width: 200%; */
 	width: 100%;
+	perspective: 4em;
 	height: 100%;
 	background-color:black;
 	position: absolute;
 	top: 0;
 	left: 0%;
-	z-index: 200;
+	z-index: 201;
 	-webkit-mask: url(../img/ink-mask.png);
 	/*-webkit-mask: url(https://veuwer.com/i/3fxb.png);*/
 }
 .notebook__left-page{
-	width: 70%;
+	flex-basis: 50%;
 	height: 100%;
 	display: -webkit-flex;
 	display: -ms-flex;
@@ -437,23 +487,25 @@ button:hover{
 	justify-content: space-between;
 	flex-direction: column;
 	position: relative;
-	padding: 15% 10%;
+	padding: 2rem 3rem;
 	text-align: center;
+	box-sizing: border-box;
 }
 .notebook__right-page{
-	width: 70%;
+	flex-basis: 50%;
 	/* margin-left: 100%; */
-	position: absolute;
-	left: 100%;
-	top: 0;
+	position: relative;
+	/* left: 100%; */
+	/* top: 0; */
 	height: 100%;
-	padding: 15% 20%;
+	box-sizing: border-box;
+	padding: 2rem 1rem;
 }
 .notebook__left-page hr{
-	width: 34vw;
+	width: 80%;
 	margin: 0 auto;
 	border: 0;
-	height: 1.2vw;
+	height: 0.8vw;
 	/* background: #555; */
 	background: transparent url(../img/hr.svg) 0 0/100% auto no-repeat;
 	transform-origin: 0 0;
@@ -461,6 +513,7 @@ button:hover{
 }
 .notebook__left-page .title{
 	font-size: 2rem;
+	margin-top: 3rem;
 }
 
 .notebook__left-page .map-vintage{
@@ -471,7 +524,7 @@ button:hover{
 
 .anim.notebook__left-page hr{
 	transform: scaleX(1);
-	transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+	transition: transform .4s 1.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 	transition-delay: 1.8s;
 }
 #carnet img.carnet_bg{
@@ -483,8 +536,8 @@ button:hover{
 	/* -webkit-filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9)); */
 	/* filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9)); */
 }
-#carnet .bg.anim{
-	-webkit-mask-size: 3000% 100%;
+.bg.anim{
+	-webkit-mask-size: 2500% 100%;
 	-webkit-animation: mask-playzero 1.2s 0s steps(24) 1 forwards;
 }
 /* #carnet .bg.anim:before{
@@ -498,14 +551,49 @@ button:hover{
 	left: 0;
 } */
 
-#carnet #carnet--container #intro-dates{
-	top: 70%;
-	left: 50%;
-	opacity: 0;
-	color: #666;
-	position: absolute;
-	font-size: 3rem;
+#intro-dates{
+	top: 32%;
+	left: 0;
+	width: 90%;
+	right: 10%;
+	/* opacity: 0; */
+	color: #333;
+	position: relative;
+	font-size: 1.7rem;
 	text-align: center;
+	display:none;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 18%;
+}
+.anim#intro-dates{
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-webkit-mask: url(../img/ink-mask.png);
+	/*-webkit-mask: url(https://veuwer.com/i/3fxb.png);*/
+	-webkit-mask-size: 2500% 100%;
+	-webkit-animation: mask-playzero-reverse 1.2s 0s steps(24) 1 forwards;
+}
+
+#intro-dates:after{
+	content: "";
+	position: absolute;
+	width: 80%;
+	/* transform-origin: 0 100%; */
+	/* transform: scaleX(0); */
+	/* margin: 0 auto; */
+	height: 55%;
+	top: 12%;
+	/* z-index: 1000; */
+	left: 10%;
+	background: transparent url(../img/trait_liaison.svg) 0 0 / contain no-repeat;
+	/* transform: scaleX(1); */
+	/* width: 80%; */
+	/* transition: width .5s ease; */
+}
+#carnet #carnet--container #intro-dates > div{
+	flex-basis: 15%;
 }
 
 div#start-intro button:hover {

@@ -12,9 +12,11 @@
 	<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
 	<link rel="stylesheet" href="./css/basic.css">
 	<style>
-	body { margin: 0; padding: 0; }
-	#map { position: absolute; top: 0; bottom: 0; width: 100%; height:100%; };
-</style>
+		body { margin: 0; padding: 0; }
+		#map { position: absolute; top: 0; bottom: 0; width: 100%; height:100%; }
+		#pauseButton{z-index:1000;position:fixed;bottom:0;left:0}
+		#pauseButton:hover{background-color: white;}
+	</style>
 
 	<meta name="viewport" content="width = 1050, user-scalable = no" />
 	<!-- <script type="text/javascript" src="./js/jquery.min.1.7.js"></script> -->
@@ -24,35 +26,28 @@
 	<script type="text/javascript" src="./js/bundle.js" defer></script>
 </head>
 <body>
+	<button id="pauseButton">Pause</button>
 
-	<div id="intro">
-		<div id="start-intro">
-			<button type="button" name="button">Commencer</button><br />
-			<button type="button">Passer intro (21 sec)</button>
+	<div class="bg"></div>
+	<div id="start-intro">
+		<div style="transform:translate3d(0,0,0);z-index:201">
+			<button type="button" id="start-intro-button" name="button">Lancer l'intro</button>
+			<a href="#" id="skip-intro">Passer intro (21 sec)</a>
 		</div>
+	</div>
+	<div id="intro">
 		<div id="carnet">
 			<div id="carnet--container">
-				<div class="bg"></div>
-				<picture>
+				<!-- <picture>
 	        <source type="image/webp" srcset="./img/notebook_bg02.webp">
-					<!-- <source type="image/jp2" srcset="./pages/1.jp2">
-	        <source type="image/jp2" srcset="./img/pics/IMAG0873.jpg"> -->
 	        <img src="./img/notebook_bg02.jpg" alt="fond carnet" class="carnet_bg">
-	      </picture>
+	      </picture> -->
 				<div class="notebook__left-page">
 					<div class="title">
-						Richwood brother
+						Richwood brothers
 						<hr>
-						present
+						<span class="present"><span>
 					</div>
-					<!-- <div class="map-vintage">
-						<picture>
-			        <source type="image/webp" srcset="./img/map_vintage.webp">
-							<source type="image/jp2" srcset="./pages/1.jp2">
-			        <source type="image/jp2" srcset="./img/pics/IMAG0873.jpg">
-			        <img src="./img/map_vintage.png" alt="fond carnet">
-			      </picture>
-					</div> -->
 					<div id="main-title" class="">
 						<div id="fondo">
 						</div>
@@ -64,7 +59,9 @@
 				</div>
 				<div class="notebook__right-page">
 					<div id="intro-dates">
-						Juin 2018
+						<div style="align-self:flex-end;">Saigon</div>
+						<div style="flex-basis: calc(100% - 30%);align-self: center;">Juin 2018</div>
+						<div style="align-self:flex-start;">Hanoi</div>
 					</div>
 				</div>
 			</div>
