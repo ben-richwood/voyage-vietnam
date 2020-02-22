@@ -26,13 +26,56 @@
 <body>
 
 	<div id="intro">
+		<div id="start-intro">
+			<button type="button" name="button">Commencer</button><br />
+			<button type="button">Passer intro (21 sec)</button>
+		</div>
+		<div id="carnet">
+			<div id="carnet--container">
+				<div class="bg"></div>
+				<picture>
+	        <source type="image/webp" srcset="./img/notebook_bg02.webp">
+					<!-- <source type="image/jp2" srcset="./pages/1.jp2">
+	        <source type="image/jp2" srcset="./img/pics/IMAG0873.jpg"> -->
+	        <img src="./img/notebook_bg02.jpg" alt="fond carnet" class="carnet_bg">
+	      </picture>
+				<div class="notebook__left-page">
+					<div class="title">
+						Richwood brother
+						<hr>
+						present
+					</div>
+					<!-- <div class="map-vintage">
+						<picture>
+			        <source type="image/webp" srcset="./img/map_vintage.webp">
+							<source type="image/jp2" srcset="./pages/1.jp2">
+			        <source type="image/jp2" srcset="./img/pics/IMAG0873.jpg">
+			        <img src="./img/map_vintage.png" alt="fond carnet">
+			      </picture>
+					</div> -->
+					<div id="main-title" class="">
+						<div id="fondo">
+						</div>
+						<div id="encima"></div>
+						<div id="button-intro">
+							<button type="button" style="display:none;" name="button" id="start-button">Commencer</button>
+						</div>
+					</div>
+				</div>
+				<div class="notebook__right-page">
+					<div id="intro-dates">
+						Juin 2018
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 		<div id="particles" class="particles">
 		  <div class="particules-container"></div>
 			<svg id="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"/>
 		</div>
-		<div class="button-intro">
-			<button type="button" name="button" id="start-button">Commencer</button>
-		</div>
+
 	</div>
 
 	<div id="map"></div>

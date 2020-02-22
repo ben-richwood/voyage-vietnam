@@ -40,7 +40,7 @@ module.exports = (env, options) => {
       node: {
         fs: "empty"
       },
-      watch: options.mode === "development" ? true : false,
+      watch: options.mode === "development" ? true : false
 
       // For modernizr issue (closure issue with this.document)
       // Seehttps://github.com/webpack/webpack/issues/512

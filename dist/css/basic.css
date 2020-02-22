@@ -254,9 +254,13 @@ button:hover{
 #intro{
 	position: absolute;
 	width:100%;
-  height:100%;
-  display:block;
+	height:100%;
+	display:block;
 	z-index: 100;
+	transform-style: preserve-3d;
+	perspective: 40em;
+	background: #000;
+	/* overflow: hidden; */
 }
 
 #particles{
@@ -278,20 +282,26 @@ button:hover{
   width:10px;
 }
 
-.button-intro{
+#button-intro{
 	position:absolute;
-	top: 50%;
+	bottom: -20%;
 	left:50%;
 	transform: translate(-50%, -50%);
 	z-index: 200;
+	opacity: 0;
 }
-.button-intro button{
+#button-intro button{
 	background-color: white;
 	cursor: pointer;
 }
 
 .particules-container{
-	width:100%;height:100%;position:absolute;background:black;top:0;left:0;
+	width:100%;
+	height:100%;
+	position:absolute;
+	background: transparent;
+	top:0;
+	left:0;
 }
 
 #mySVG {
@@ -300,4 +310,205 @@ button:hover{
 	height:100%;
 	position: absolute;
 	z-index: 300;
+}
+
+/* REBOOK Effect */
+#main-title{
+	position: absolute;
+	width: 50vw;
+	height: 29vw;
+	bottom: -10%;
+	left: 50%;
+	z-index: 200;
+	/* transform: translate(-50%, -50%); */
+	transform: translateY(-50%) translateX(-50%) rotateY(0) scale(.95) translateZ(10px);
+	opacity: 1;
+	visibility: visible;
+	pointer-events: none;
+}
+#main-title.show-menu{
+	transform: rotateY(4deg) rotateX(4deg) translateY(-50%) translateX(-50%) scale(.97) translateZ(100px);
+	opacity: 1;
+	/* visibility: visible; */
+	/* transition: transform .8s ease-in-out, visibility 0s linear, opacity .8s ease-in-out; */
+	/* -webkit-transform: transform .8s ease-in-out, visibility 0s linear, opacity .8s ease-in-out; */
+	/* transition-delay: 1s; */
+}
+.show-menu #fondo{
+  /* background: url(https://i.imgur.com/ygVpJMP.jpg) no-repeat left top; */
+  /*background: url(https://s28.postimg.org/3z90275y5/yg_Vp_JMP.jpg) no-repeat left top;*/
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.show-menu #encima{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  -webkit-mask: url(../img/sketch-mask.png);
+  /*-webkit-mask: url(https://veuwer.com/i/3fxb.png);*/
+  -webkit-mask-size: 3000% 100%;
+  -webkit-animation: mask-playzero 2.5s 0s steps(29) 1 forwards;
+}
+
+.show-menu #encima:before{
+  content: '';
+  background: url(../img/main_title.png) 50% 50% / contain no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-filter: drop-shadow(-5px 2px 6px rgba(0,0,0,0.4));
+  filter: drop-shadow(-5px 2px 6px rgba(0,0,0,0.4));
+}
+
+@keyframes mask-playzero {
+  from {
+    -webkit-mask-position: 0 0;
+    -ms-mask-position: 0 0;
+    -moz-mask-position: 0 0;
+    -o-mask-position: 0 0;
+    mask-position: 0 0;
+	}
+	to {
+	  -webkit-mask-position: 100% 0;
+	  -ms-mask-position: 100% 0;
+	  -moz-mask-position: 100% 0;
+	  -o-mask-position: 100% 0;
+	  mask-position: 100% 0;
+	}
+}
+
+#start-intro{
+	width: 100%;
+	height: 100%;
+	display:flex;
+	align-items: center;
+	position: absolute;
+	z-index: 201;
+	justify-content: center;
+	/* pointer-events: none; */
+}
+
+#carnet{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	/* overflow: hidden; */
+	opacity: 0;
+	z-index: 99;
+	pointer-events: none;
+}
+
+#carnet #carnet--container{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+#carnet .bg{
+	/* width: 200%; */
+	width: 100%;
+	height: 100%;
+	background-color:black;
+	position: absolute;
+	top: 0;
+	left: 0%;
+	z-index: 200;
+	-webkit-mask: url(../img/ink-mask.png);
+	/*-webkit-mask: url(https://veuwer.com/i/3fxb.png);*/
+}
+.notebook__left-page{
+	width: 70%;
+	height: 100%;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	position: relative;
+	padding: 15% 10%;
+	text-align: center;
+}
+.notebook__right-page{
+	width: 70%;
+	/* margin-left: 100%; */
+	position: absolute;
+	left: 100%;
+	top: 0;
+	height: 100%;
+	padding: 15% 20%;
+}
+.notebook__left-page hr{
+	width: 34vw;
+	margin: 0 auto;
+	border: 0;
+	height: 1.2vw;
+	/* background: #555; */
+	background: transparent url(../img/hr.svg) 0 0/100% auto no-repeat;
+	transform-origin: 0 0;
+	transform: scaleX(0);
+}
+.notebook__left-page .title{
+	font-size: 2rem;
+}
+
+.notebook__left-page .map-vintage{
+	position: absolute;
+	top: 22%;
+	left: 10%;
+}
+
+.anim.notebook__left-page hr{
+	transform: scaleX(1);
+	transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+	transition-delay: 1.8s;
+}
+#carnet img.carnet_bg{
+	width: 180%;
+	position: absolute;
+	top: 0;
+	/* left: -10%; */
+	/* filter: drop-shadow(2px 4px 6px black); */
+	/* -webkit-filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9)); */
+	/* filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9)); */
+}
+#carnet .bg.anim{
+	-webkit-mask-size: 3000% 100%;
+	-webkit-animation: mask-playzero 1.2s 0s steps(24) 1 forwards;
+}
+/* #carnet .bg.anim:before{
+	content: '';
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	/* background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+} */
+
+#carnet #carnet--container #intro-dates{
+	top: 70%;
+	left: 50%;
+	opacity: 0;
+	color: #666;
+	position: absolute;
+	font-size: 3rem;
+	text-align: center;
+}
+
+div#start-intro button:hover {
+    background: white;
+    cursor: pointer;
 }

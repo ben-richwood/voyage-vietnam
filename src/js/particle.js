@@ -51,12 +51,13 @@ var createParticles = function() {
   myCircle.setAttributeNS(null,"class","dot");
   myCircle.setAttributeNS(null,"r",5);
   mySVG.appendChild(myCircle);
-  gsap.set($(".dot")[i],{
+  const allDots = document.getElementsByClassName('dot');
+  gsap.set(allDots[i],{
     x:Random(w),
     y:0 ,
     scale:getRandom(particleSizeMin, particleSizeMax) + 0.025,
     fill:particleColor});
-   animm($(".dot")[i]);
+   animm(allDots[i]);
    }
 
    function animm(elm){
@@ -79,7 +80,11 @@ var createParticles = function() {
 };
 
 // create particles
-createParticles();
+// createParticles();
+const carnet = document.getElementById("carnet");
+var music = new Audio('./uncharted_320k.mp3');
+
+createParticles()
 
 document.getElementById("start-button").addEventListener('click', function(){
   let node = document.getElementById("intro");
@@ -95,3 +100,38 @@ function killThemAll() {
     node.parentNode.removeChild(node);
   }
 }
+
+function addClassToMainTitle() {
+  document.getElementById("main-title").className = "show-menu";
+}
+
+function launchMusic() {
+  music.play()
+}
+
+function animCarnet(){
+  let carnetContainer = document.getElementById("carnet--container");
+  carnetContainer.querySelector(".bg").classList.add("anim");
+  carnetContainer.querySelector(".notebook__left-page").classList.add("anim");
+}
+
+document.querySelector("#start-intro button").addEventListener('click', launchEx, false);
+
+function launchEx() {
+  const masterTimeline = gsap.timeline();
+  masterTimeline.set(carnet, {scale: 1.4})
+  masterTimeline.to("#start-intro", {duration: 0, delay: 0, opacity: 0, onComplete: animCarnet})
+  .to(carnet, {duration: .4, opacity: 1})
+  .to("#intro", {duration: .5, onComplete: launchMusic})
+  .to("#button-intro", {duration: .3, delay:.5, opacity: 1})
+  // .to(carnet, {duration: 4, delay: .2, xPercent: "-=10", yPercent: "-=40", scale: 1})
+  .to('#main-title', {duration: 1, delay: -2, onStart: addClassToMainTitle})
+  // .to(carnet, {duration: 4, delay: .2, xPercent: "-=40", yPercent: "+=30"})
+  .to("#intro-dates", {duration: 4, delay: -4, xPercent: "-=70", opacity: 1})
+}
+
+
+/*
+1. particles
+2. first drawing
+*/

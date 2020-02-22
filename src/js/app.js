@@ -24,7 +24,7 @@ function loadApp() {
 			width:922,
 			height:700,
 			elevation: 200,
-			inclination: 90,
+			inclination: 50,
 			duration: 1200,
 			page: 2, // initial page
 			pages: 14,
