@@ -110,12 +110,13 @@ function animCarnet(){
 let isPaused = false;
 const masterTimeline = gsap.timeline();
 const tw = carnet.offsetWidth;
-const th = window.innerHeight;
+const th = carnet.offsetHeight;
 
 document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
 
 document.querySelector("#skip-intro").addEventListener('click', launchMap, false);
-document.getElementById("start-button").addEventListener('click', launchMap, false)
+document.getElementById("button-intro-map").addEventListener('click', launchMap, false);
+document.getElementById("progressSlider").addEventListener("input", update);
 document.getElementById("pauseButton").addEventListener('click', function(){
   isPaused = !isPaused;
   if (isPaused) {
@@ -125,24 +126,121 @@ document.getElementById("pauseButton").addEventListener('click', function(){
     masterTimeline.play();
     music.play()
   }
-}, false)
+}, false);
+
+function update(){
+  masterTimeline.progress(progressSlider.value); // change the timeline’s
+}
+
+// place all active animations in one timeline
+// var tl = TimelineLite.exportRoot();
+
+// get element location on page
+
+let waypoints = [];
+let counter = 0
+let rootr = carnet.getBoundingClientRect();
+// get viewport size
+let vp = { "width": window.innerWidth, "height": window.innerHeight };
+let scale_factor = 0.8;
+[ "offset-title", "title", "main-title", "intro-dates", "button-intro-map" ].forEach(function(e){
+  let cs = document.getElementById(e);
+  let csr = cs.getBoundingClientRect();
+  csr.center = { 'x': csr.width/2.0 + csr.left,
+  'y': csr.height/2.0 + csr.top };
+  csr.center.string = ""+csr.center.x+"px "+ csr.center.y+"px";
+
+  // calculate translate parameters
+  let t = {};
+  t.scale = scale_factor * (vp.height/csr.height);
+  t.translate = {
+    'x': (rootr.left + (vp.width/2.0 - csr.center.x)),
+    'y': (rootr.top + (vp.height/2.0 - csr.center.y)) };
+  t.translate_w_scale = {
+    'x': t.translate.x - (t.scale * csr.center.x),
+    'y': t.translate.y - (t.scale * csr.center.y)};
+  t.scale_centered = {
+    'x': -((csr.center.x * t.scale) - csr.center.x),
+    'y': -((csr.center.y * t.scale) - csr.center.y) };
+  t.transformOrigin = {
+    left: csr.center.x,
+    top: csr.center.y
+  }
+  t.csr = csr
+  waypoints.push(t)
+  counter++;
+});
+
+
+let origin = waypoints[0].transformOrigin;
 
 function launchIntro() {
-  masterTimeline.set(carnet, {scale: 1, z: 550, xPercent: 55, yPercent: 50, filter: "blur(6px)"})
+
+  masterTimeline.set(carnet, {
+    x: waypoints[0].translate.x,
+    y: waypoints[0].translate.y,
+    transformOrigin: waypoints[0].csr.center.string,
+    scale: 3,
+    filter: "blur(6px)"
+  })
+
   // .set(".bg", {scale: 1, z: 600})
 
-  masterTimeline.to("#start-intro", {duration: 1, delay: 0, opacity: 0, onComplete: animCarnet})
+  masterTimeline.defaultEase = "power2.inOut";
+  masterTimeline.to("#start-intro", {duration: 1, opacity: 0, onComplete: animCarnet})
+
     .to("#start-intro", {delay: .4, duration: .2, onComplete: launchMusic})
-    .to(carnet, {duration: 1.3, delay: .8, filter: "blur(0px)", ease: "power1.out"})
-    .to(carnet, {duration: 3, delay: -2.3, yPercent: 50, xPercent: 45, z: "-=50", ease: "power1.out"})
-    .to('#main-title', {duration: 1, delay: .4, onStart: addClassToMainTitle})
-    .to(carnet, {duration: 5, delay: -2, z: 400, rotate: "-4deg", xPercent: 25, yPercent: 25, ease: "power2.inOut"})
-    .to(carnet, {duration: 5, delay: 0, z: 400, rotate: "3deg", xPercent: -5, yPercent: 60, ease: "power1.inOut"})
-    .to("#intro-dates", {duration: 0, delay: -1, onComplete: function(){
+
+    .addLabel("presents", "+=0")
+    .to(origin, 4, { left: waypoints[1].transformOrigin.left, top: waypoints[1].transformOrigin.top, ease: "power4.out", onUpdate: function() { updateOrigin(1) } }, "presents" )
+    .to(carnet, { duration: 1.2, filter: "blur(0px)", ease: "power1.inOut"}, "presents")
+    .to(carnet, { duration: 4, ease: "power4.out",
+        x: waypoints[1].translate.x,
+        y: waypoints[1].translate.y,
+        scale: 3
+      }, "presents")
+    .to(carnet, { duration: 5, ease: "power4.out", rotate: "-4deg"}, "presents-=1")
+
+    .addLabel("main-title", "+=0")
+    .to(origin, 3, { left: waypoints[2].transformOrigin.left, top: waypoints[2].transformOrigin.top, ease: "power1.inOut", onUpdate: function() { updateOrigin(2) } }, "main-title" )
+    .to(carnet, { duration: 3, ease: "power1.inOut",
+      x: waypoints[2].translate.x,
+      y: waypoints[2].translate.y,
+    }, "main-title")
+    .to('#main-title', {duration: 3, onStart: addClassToMainTitle}, "main-title+=2")
+
+    .addLabel("dates", "+=0")
+    .to(origin, 7, { left: waypoints[3].transformOrigin.left, top: waypoints[3].transformOrigin.top, ease: "power2.inOut",
+      onUpdate: function() { updateOrigin(3) }
+    }, "dates")
+    .to(carnet, {duration: 7, rotate: "-4deg", ease: "power2.inOut",
+        x: waypoints[3].translate.x,
+        y: waypoints[3].translate.y,
+        scale: 2.4
+      }, "dates")
+      // .to("#intro-dates", {duration: .3, opacity: 1}, "dates+=4.3")
+      // .to("#intro-dates", {duration: 0.2, visibility: "visible"}, "dates+=5")
+      // .to(carnet, {duration: 1.2, onStart: function(){ document.getElementById("intro-dates").classList.add("anim"); }}, "dates+=5")
+    /*
+    .to(origin, 5, { left: waypoints[4].transformOrigin.left, top: waypoints[4].transformOrigin.top,
+      onUpdate: function() { updateOrigin(4) }
+    }, "dates")
+    .to(carnet, {duration: 5, rotate: "3deg", ease: "power1.inOut",
+        x: waypoints[3].translate.x,
+        y: waypoints[3].translate.y,
+        scale: 1.8}, "dates")
+    .to("#intro-dates", {duration: 0, onComplete: function(){
       document.getElementById("intro-dates").classList.add("anim");
-    }})
-    // .to("#intro-dates", {duration: .5, delay: 0, xPercent: "1", opacity: 1})
-    .to(carnet, {duration: 6, delay: -0.5, z: 450, rotate: "-7deg", xPercent: -10, yPercent: 20, ease: "power2.inOut"})
+    }}, "dates")
+
+
+    .to(carnet, {duration: 6, delay: -0.5, z: 450, rotate: "-7deg", ease: "power2.inOut",
+        x: waypoints[4].translate.x,
+        y: waypoints[4].translate.y,
+        // onUpdate: function(){updateOrigin(4)},
+        transformOrigin: waypoints[4].csr.center.string,
+        scale: 2.8}, "dates")
+    */
 
     // +xPercent => vers la gauche
     // -xPercent => vers la droite
@@ -150,10 +248,14 @@ function launchIntro() {
     // +yPercent => remonte
     // -yPercent => redescend
 
-    // .to("#intro", {duration: .5})
-    // .to("#button-intro", {duration: .3, delay:.5, opacity: 1})
-    // .to(carnet, {duration: 4, delay: .2, xPercent: "-=10", yPercent: "-=40", scale: 1})
-    // .to(carnet, {duration: 4, delay: .2, xPercent: "-=40", yPercent: "+=30"})
+}
+
+function updateOrigin(i) {
+  // masterTimeline.set(carnet, {
+  gsap.set(carnet, {
+    transformOrigin: origin.left + "px " + origin.top + "px", ease: "power2.inOut"
+  }, "+=0");
+  // return origin.left + origin.top;
 }
 
 function launchMap() {

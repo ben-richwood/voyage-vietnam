@@ -14,8 +14,13 @@
 	<style>
 		body { margin: 0; padding: 0; }
 		#map { position: absolute; top: 0; bottom: 0; width: 100%; height:100%; }
-		#pauseButton{z-index:1000;position:fixed;bottom:0;left:0}
+		#controls{z-index:1000;position:fixed;bottom:0;left:0; background-color: rgba(255,255,255,1);padding:1rem;opacity:.2}
+		#controls:hover{opacity:1;}
+		#progressSlider{width:30vw;}
+		#pauseButton{}
 		#pauseButton:hover{background-color: white;}
+		#offset-title{position: absolute;top:-2vw;left:2vw;width:80%;height:3rem;}
+		#button-intro-map{display:flex;align-items: center;position: absolute;bottom:10%;left:0; width: 100%; justify-content: center;}
 	</style>
 
 	<meta name="viewport" content="width = 1050, user-scalable = no" />
@@ -26,7 +31,10 @@
 	<script type="text/javascript" src="./js/bundle.js" defer></script>
 </head>
 <body>
-	<button id="pauseButton">Pause</button>
+	<div id="controls">
+		<button id="pauseButton">Pause</button>
+		<input id="progressSlider" type="range" min="0" max="1" value="0" step="0.001" />
+	</div>
 
 	<div class="bg"></div>
 	<div id="start-intro">
@@ -43,7 +51,8 @@
 	        <img src="./img/notebook_bg02.jpg" alt="fond carnet" class="carnet_bg">
 	      </picture> -->
 				<div class="notebook__left-page">
-					<div class="title">
+					<div id="offset-title"></div>
+					<div class="title" id="title">
 						Richwood brothers
 						<hr>
 						<span class="present"><span>
@@ -52,9 +61,6 @@
 						<div id="fondo">
 						</div>
 						<div id="encima"></div>
-						<div id="button-intro">
-							<button type="button" style="display:none;" name="button" id="start-button">Commencer</button>
-						</div>
 					</div>
 				</div>
 				<div class="notebook__right-page">
@@ -62,6 +68,9 @@
 						<div style="align-self:flex-end;">Saigon</div>
 						<div style="flex-basis: calc(100% - 30%);align-self: center;">Juin 2018</div>
 						<div style="align-self:flex-start;">Hanoi</div>
+					</div>
+					<div id="button-intro-map">
+						<button type="button" name="button" id="start-button">Commencer</button>
 					</div>
 				</div>
 			</div>
