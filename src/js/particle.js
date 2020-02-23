@@ -109,7 +109,8 @@ function animCarnet(){
 }
 let isPaused = false;
 const masterTimeline = gsap.timeline();
-const tw = window.innerWidth
+const tw = carnet.offsetWidth;
+const th = window.innerHeight;
 
 document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
 
@@ -127,21 +128,21 @@ document.getElementById("pauseButton").addEventListener('click', function(){
 }, false)
 
 function launchIntro() {
-  masterTimeline.set(carnet, {scale: 1, z: 550, x: 0.55*tw, yPercent: 90, filter: "blur(6px)"})
+  masterTimeline.set(carnet, {scale: 1, z: 550, xPercent: 55, yPercent: 50, filter: "blur(6px)"})
   // .set(".bg", {scale: 1, z: 600})
 
   masterTimeline.to("#start-intro", {duration: 1, delay: 0, opacity: 0, onComplete: animCarnet})
     .to("#start-intro", {delay: .4, duration: .2, onComplete: launchMusic})
     .to(carnet, {duration: 1.3, delay: .8, filter: "blur(0px)", ease: "power1.out"})
-    .to(carnet, {duration: 3, delay: -2.3, yPercent: "-=20", xPercent: "-=5", z: "-=50", ease: "power1.out"})
+    .to(carnet, {duration: 3, delay: -2.3, yPercent: 50, xPercent: 45, z: "-=50", ease: "power1.out"})
     .to('#main-title', {duration: 1, delay: .4, onStart: addClassToMainTitle})
-    .to(carnet, {duration: 5, delay: -2, z: 400, rotate: "-4deg", xPercent: "45", yPercent: "25", ease: "power2.inOut"})
-    .to(carnet, {duration: 5, delay: 0, z: 400, rotate: "3deg", xPercent: "5", yPercent: "60", ease: "power1.inOut"})
+    .to(carnet, {duration: 5, delay: -2, z: 400, rotate: "-4deg", xPercent: 25, yPercent: 25, ease: "power2.inOut"})
+    .to(carnet, {duration: 5, delay: 0, z: 400, rotate: "3deg", xPercent: -5, yPercent: 60, ease: "power1.inOut"})
     .to("#intro-dates", {duration: 0, delay: -1, onComplete: function(){
       document.getElementById("intro-dates").classList.add("anim");
     }})
     // .to("#intro-dates", {duration: .5, delay: 0, xPercent: "1", opacity: 1})
-    .to(carnet, {duration: 6, delay: -0.5, z: 450, rotate: "-7deg", xPercent: "-=10", yPercent: "-=40", ease: "power2.inOut"})
+    .to(carnet, {duration: 6, delay: -0.5, z: 450, rotate: "-7deg", xPercent: -10, yPercent: 20, ease: "power2.inOut"})
 
     // +xPercent => vers la gauche
     // -xPercent => vers la droite

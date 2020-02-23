@@ -429,11 +429,17 @@ button:hover{
 	align-items: center;
 	position: absolute;
 	z-index: 202;
+	perspective: 5em;
+	/* transform-style: preserve-3d; */
+	justify-content: center;
+}
+
+#start-intro > div{
 	justify-content: center;
 	/* pointer-events: none; */
 	flex-direction: column;
-	transform-style: preserve-3d;
-	perspective: 5em;
+	text-align: center;
+
 }
 
 #start-intro-button {
