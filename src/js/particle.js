@@ -42,8 +42,8 @@ var createParticles = function() {
   var total = 70;
   let mySVG = document.getElementById("mySVG")
 
-  // const w = window.innerWidth;
-  // const h = window.innerHeight;
+  const w = window.innerWidth;
+  const h = window.innerHeight;
   // var w = mySVG.width();
   // var h = mySVG.height();
 
@@ -86,6 +86,7 @@ const carnet = document.getElementById("carnet");
 const mainTitle = document.getElementById("main-title");
 const blackBg = document.querySelector(".bg");
 const startIntro = document.getElementById("start-intro");
+const intro = document.getElementById("intro");
 var music = new Audio('./uncharted_320k.mp3');
 
 
@@ -112,15 +113,16 @@ function animCarnet(){
   carnetContainer.querySelector(".notebook__left-page").classList.add("anim");
 }
 let isPaused = false;
-const masterTimeline = gsap.timeline();
+const masterTimeline = gsap.timeline({onUpdate: adjustUI});
 const tw = carnet.offsetWidth;
 const th = carnet.offsetHeight;
 
-document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
+const progressSlider = document.getElementById("progressSlider");
 
+document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
 document.querySelector("#skip-intro").addEventListener('click', launchMap, false);
-document.getElementById("button-intro-map").addEventListener('click', launchMap, false);
-document.getElementById("progressSlider").addEventListener("input", update);
+document.querySelector("#button-intro-map button").addEventListener('click', launchMap, false);
+progressSlider.addEventListener("input", update);
 document.getElementById("pauseButton").addEventListener('click', function(){
   isPaused = !isPaused;
   if (isPaused) {
@@ -128,6 +130,7 @@ document.getElementById("pauseButton").addEventListener('click', function(){
     music.pause()
   } else {
     masterTimeline.play();
+    music.currentTime = masterTimeline.progress();
     music.play()
   }
 }, false);
@@ -187,6 +190,7 @@ function launchIntro() {
     scale: 3,
     filter: "blur(6px)"
   })
+  .set("#intro-dates", {display: "none"})
 
   // .set(".bg", {scale: 1, z: 600})
 
@@ -211,7 +215,7 @@ function launchIntro() {
       x: waypoints[2].translate.x,
       y: waypoints[2].translate.y,
     }, "main-title")
-    .to(mainTitle, {duration: 3, onStart: addClassToMainTitle}, "main-title+=2")
+    .to(mainTitle, {duration: 3, scale: 1.065, ease: "power2.inOut", onStart: addClassToMainTitle}, "main-title+=2")
 
     .addLabel("dates", "+=0")
     .to(origin, 7, { left: waypoints[3].transformOrigin.left, top: waypoints[3].transformOrigin.top, ease: "power2.inOut",
@@ -223,8 +227,19 @@ function launchIntro() {
         scale: 2.4
       }, "dates")
       // .to("#intro-dates", {duration: .3, opacity: 1}, "dates+=4.3")
-      // .to("#intro-dates", {duration: 0.2, visibility: "visible"}, "dates+=5")
-      // .to(carnet, {duration: 1.2, onStart: function(){ document.getElementById("intro-dates").classList.add("anim"); }}, "dates+=5")
+      .to("#intro-dates", {duration: 0, display: "flex"}, "dates+=5")
+      .to(carnet, {duration: 1.2, onStart: function(){ document.getElementById("intro-dates").classList.add("anim"); }}, "dates+=5.5")
+
+      .addLabel("ending", "+=0")
+      .to(origin, 7, { left: waypoints[4].transformOrigin.left, top: waypoints[4].transformOrigin.top, ease: "power2.inOut",
+        onUpdate: function() { updateOrigin(4) }
+      }, "ending")
+      .to(carnet, {duration: 7, rotate: "-4deg", ease: "power2.inOut",
+          x: waypoints[4].translate.x,
+          y: waypoints[4].translate.y,
+          scale: 2.4
+        }, "ending")
+
     /*
     .to(origin, 5, { left: waypoints[4].transformOrigin.left, top: waypoints[4].transformOrigin.top,
       onUpdate: function() { updateOrigin(4) }
@@ -255,19 +270,26 @@ function launchIntro() {
 }
 
 function updateOrigin(i) {
-  // masterTimeline.set(carnet, {
   gsap.set(carnet, {
     transformOrigin: origin.left + "px " + origin.top + "px", ease: "power2.inOut"
   }, "+=0");
-  // return origin.left + origin.top;
+}
+
+function adjustUI() {
+  progressSlider.value = masterTimeline.progress();
 }
 
 function launchMap() {
-  let node = document.getElementById("intro");
+  // let node = document.getElementById("intro");
+  const transition = gsap.timeline();
+  transition.set(carnet, {})
+  transition.to(intro, { duration: .1, delay: 0, display: "none", onComplete: killThemAll })
+    .to(startIntro, { duration: 1, delay: 0.2, opacity: 0 })
+    .to(blackBg, { duration: .3, delay: -0.5, opacity: 0, onComplete: function(){
+      blackBg.style.display = "none";
+      startIntro.style.display = "none";
+    } })
   initMap();
-  gsap.to(node, .2, { delay: 2, opacity: 0, onComplete: killThemAll });// .call(killThemAll)
-  gsap.to(startIntro, .2, { delay: -0.2, opacity: 0, onComplete: function(){ startIntro.style.display = "none";} })
-  gsap.to(blackBg, .2, { delay: -0.4, opacity: 0, onComplete: function(){ blackBg.style.display = "none";} })
 }
 
 

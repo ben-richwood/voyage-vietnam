@@ -140,7 +140,7 @@ function spreadPhotos (f) {
 	    tl.to(elements[i], 1, {
 				duration: .5,
 				opacity: 1,
-				left: width - (Math.random() * 400) - 300,
+				left: width - (Math.random() * (width * .4)) - (width / 4),
 				top: Math.random() * 300,
 				rotation: (Math.random() * 40) - 20,
 				stagger: 0.2,
