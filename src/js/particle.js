@@ -41,8 +41,9 @@ var createParticles = function() {
 
   var total = 70;
   let mySVG = document.getElementById("mySVG")
-  const w = window.innerWidth;
-  const h = window.innerHeight;
+
+  // const w = window.innerWidth;
+  // const h = window.innerHeight;
   // var w = mySVG.width();
   // var h = mySVG.height();
 
@@ -82,6 +83,9 @@ var createParticles = function() {
 // create particles
 // createParticles();
 const carnet = document.getElementById("carnet");
+const mainTitle = document.getElementById("main-title");
+const blackBg = document.querySelector(".bg");
+const startIntro = document.getElementById("start-intro");
 var music = new Audio('./uncharted_320k.mp3');
 
 
@@ -94,7 +98,7 @@ function killThemAll() {
 }
 
 function addClassToMainTitle() {
-  document.getElementById("main-title").className = "show-menu";
+  mainTitle.className = "show-menu";
 }
 
 // createParticles()
@@ -104,7 +108,7 @@ function launchMusic() {
 
 function animCarnet(){
   let carnetContainer = document.getElementById("carnet--container");
-  document.querySelector(".bg").classList.add("anim");
+  blackBg.classList.add("anim");
   carnetContainer.querySelector(".notebook__left-page").classList.add("anim");
 }
 let isPaused = false;
@@ -187,9 +191,9 @@ function launchIntro() {
   // .set(".bg", {scale: 1, z: 600})
 
   masterTimeline.defaultEase = "power2.inOut";
-  masterTimeline.to("#start-intro", {duration: 1, opacity: 0, onComplete: animCarnet})
+  masterTimeline.to(startIntro, {duration: 1, opacity: 0, onComplete: animCarnet})
 
-    .to("#start-intro", {delay: .4, duration: .2, onComplete: launchMusic})
+    .to(startIntro, {delay: .4, duration: .2, onComplete: launchMusic})
 
     .addLabel("presents", "+=0")
     .to(origin, 4, { left: waypoints[1].transformOrigin.left, top: waypoints[1].transformOrigin.top, ease: "power4.out", onUpdate: function() { updateOrigin(1) } }, "presents" )
@@ -207,7 +211,7 @@ function launchIntro() {
       x: waypoints[2].translate.x,
       y: waypoints[2].translate.y,
     }, "main-title")
-    .to('#main-title', {duration: 3, onStart: addClassToMainTitle}, "main-title+=2")
+    .to(mainTitle, {duration: 3, onStart: addClassToMainTitle}, "main-title+=2")
 
     .addLabel("dates", "+=0")
     .to(origin, 7, { left: waypoints[3].transformOrigin.left, top: waypoints[3].transformOrigin.top, ease: "power2.inOut",
@@ -261,8 +265,9 @@ function updateOrigin(i) {
 function launchMap() {
   let node = document.getElementById("intro");
   initMap();
-  var tween = gsap.to(node, 2, { delay: 2, opacity: 0, paused: true, onComplete: killThemAll })// .call(killThemAll)
-  tween.play();
+  gsap.to(node, .2, { delay: 2, opacity: 0, onComplete: killThemAll });// .call(killThemAll)
+  gsap.to(startIntro, .2, { delay: -0.2, opacity: 0, onComplete: function(){ startIntro.style.display = "none";} })
+  gsap.to(blackBg, .2, { delay: -0.4, opacity: 0, onComplete: function(){ blackBg.style.display = "none";} })
 }
 
 

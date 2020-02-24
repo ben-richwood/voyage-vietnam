@@ -19,7 +19,6 @@ blackScreen.addEventListener("click", function(){
 let intervalListener;
 
 function loadApp() {
-	// Create the flipbook
 	$('.flipbook').turn({
 			width:922,
 			height:700,
@@ -28,9 +27,7 @@ function loadApp() {
 			duration: 1200,
 			page: 2, // initial page
 			pages: 14,
-			// Enable gradients
 			gradients: true,
-			// Auto center this flipbook
 			autoCenter: false
 	});
 
@@ -50,6 +47,7 @@ function goTo(p) {
 const nextPageButton = document.getElementById("next-page");
 const prevPageButton = document.getElementById("prev-page");
 const tocPageButton = document.getElementById("toc-page");
+const closeCardButton = document.querySelector("#close-card button");
 
 nextPageButton.addEventListener('click', nextPage, false);
 prevPageButton.addEventListener('click', prevPage, false);
@@ -60,12 +58,18 @@ tocPageButton.addEventListener('click', function(){
 // Autoloading function to add the listeners:
 var elem = document.getElementsByClassName("button-images");
 
-for (var i = 0; i < elem.length; i += 2) {
+////////////////////////////////////////////////////////////////////////////////
+// EVENT LISTENERS
+////////////////////////////////////////////////////////////////////////////////
+
+for (var i = 0; i < elem.length; i++) {
     (function () {
       var cardNumber = elem[i].getAttribute("data-card");
       elem[i].addEventListener("click", function() { spreadPhotos(cardNumber); }, false);
     }()); // immediate invocation
 }
+
+closeCardButton.addEventListener('click', closeCardDeck, false);
 
 // Get the element, add a click listener...
 document.getElementById("page-list").addEventListener("click", function(e) {
@@ -78,6 +82,11 @@ document.getElementById("page-list").addEventListener("click", function(e) {
     goTo(pageNumber);
 	}
 });
+
+function closeCardDeck () {
+	blackScreen.style.display = "none";
+	cardDeck.style.display = "none";
+}
 
 function nextPage() {
 	// $(".flipbook").turn("next");
@@ -100,14 +109,19 @@ function spreadPhotos (f) {
 	blackScreen.style.display = "block";
 	cardDeck.style.display = "block";
 	stopMapAnimation();
-  console.log(parseInt(f, 10), f);
 	let loc = locations.features.find(e => e.properties.id == parseInt(f, 10));
-
-	console.log("loc", parseInt(f), loc);
+	// console.log(parseInt(f, 10), f);
+	// console.log("loc", parseInt(f), loc);
   if (loc === undefined) return;
 	const photos = [...loc.properties.photos];
-	while (cardDeck.firstChild) {
-    cardDeck.removeChild(cardDeck.firstChild);
+
+	let allCards = cardDeck.querySelectorAll(".card");
+	// console.log("cardDeck.children", cardDeck.children);
+	for (let i = 0, j = allCards.length ; i<j ; i++) {
+		console.log("cardDeck.firstChild", allCards[i]);
+		if (allCards[i] && allCards[i].className === "card"){
+	    cardDeck.removeChild(allCards[i]);
+		}
   }
 	photos.forEach(function(photo){
 		const card = document.createElement( 'div' );

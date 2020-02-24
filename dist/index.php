@@ -5,7 +5,7 @@
 <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Kalam|Permanent+Marker&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kalam:300|Permanent+Marker&display=swap" rel="stylesheet">
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 
 	<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
@@ -31,7 +31,7 @@
 	<script type="text/javascript" src="./js/bundle.js" defer></script>
 </head>
 <body>
-	<div id="controls">
+	<div id="controls" style="display:none;">
 		<button id="pauseButton">Pause</button>
 		<input id="progressSlider" type="range" min="0" max="1" value="0" step="0.001" />
 	</div>
@@ -105,6 +105,9 @@
         <img src="./img/pics/IMAG0875.jpg" alt="Img 1">
       </picture>
 	  </div>
+		<div id="close-card">
+			<button type="button" name="button">Fermer</button>
+		</div>
 	</div>
 
 <div class="flipbook-viewport">
