@@ -23,7 +23,7 @@
 			padding: 1rem;
 			opacity: .2;
 			transform: translateX(-50%);
-			border-radius: 6px;
+			/* border-radius: 6px; */
 			border: 1px solid rgba(255,255,255,.4);
 			transition: all .3s ease;
 			text-align: center;
@@ -108,7 +108,7 @@
 						<div style="align-self:flex-start;">Hanoi</div>
 					</div>
 					<div id="button-intro-map">
-						<button type="button" name="button" class="button-special" id="start-button">Commencer</button>
+						<button type="button" name="button" class="button-special anim" id="start-button">Commencer</button>
 					</div>
 				</div>
 			</div>
@@ -162,13 +162,17 @@
 					<h1>Chronologie</h1>
 					<ul id="page-list">
 						<li data-page="4">Hanoi <span>5-6 juin</span></li>
-						<li data-page="6">Ninh Binh<span>7 juin</span></li>
+						<li data-page="6"><span>Ninh Binh</span><span>7 juin</span></li>
 						<li data-page="8">Sur la route de Ha Giang<span>8 juin</span></li>
 						<li data-page="10">Ha Giang<span>9 juin</span></li>
 						<li data-page="12">Sur la route de Dong Van<span>10 juin</span></li>
 						<li data-page="14">Dong Van<span>11-12 juin</span></li>
 						<li data-page="16">Direction Lung Cu<span>13 juin</span></li>
-						<li data-page="18">Direction Lung Cu<span>13 juin</span></li>
+						<li data-page="18">Cao Bang<span>14 juin</span></li>
+						<li data-page="20">Ban Gioc - la frontière chinoiseg<span>15 juin</span></li>
+						<li data-page="22">??<span>16 juin</span></li>
+						<li data-page="24">Be Be Lake<span>17 juin</span></li>
+						<li data-page="26">Retour à Hanoi<span>18 - 19 juin</span></li>
 					</ul>
 				</div>
 			</div>

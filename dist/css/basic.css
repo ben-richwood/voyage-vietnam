@@ -136,6 +136,26 @@ button:hover{
  .toc-page img{
 	width: 5rem;
 }
+ul#page-list{
+	width: 80%;
+}
+ul#page-list li {
+	cursor: pointer;
+	font-size: 1.1rem;
+	margin-bottom: 0.4rem;
+	border-bottom: 1px solid transparent;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-webkit-flex: row;
+	-ms-flex: row;
+	flex: row;
+	justify-content: space-between;
+}
+#page-list li:hover{
+	border-bottom: 1px solid #63430a;
+}
+ul#page-list li span{}
 
 #blackScreen{
 	position: absolute;
@@ -180,6 +200,7 @@ button:hover{
 	background-color: white;
 	padding:1rem;
 	height: auto;
+	cursor: grabbing;
 	box-shadow: 0 2.1px 8.3px rgba(0, 0, 0, 0.014), 0 5.8px 22.9px rgba(0, 0, 0, 0.026), 0 13.9px 55.2px rgba(0, 0, 0, 0.04), 0 46px 183px rgba(0, 0, 0, 0.07);
 }
 .card img{
@@ -222,6 +243,13 @@ button:hover{
 	padding: 1rem;
 	box-sizing: border-box;
 	background: transparent;
+}
+
+.inner-page img{
+	max-width: 100%;
+	transform: rotate(-3deg) scale(0.9);
+	border: 17px solid white;
+	box-sizing: border-box;
 }
 
 .flipbook .page{
@@ -311,6 +339,26 @@ button:hover{
 #button-intro button{
 	background-color: white;
 	cursor: pointer;
+}
+
+#start-button{
+	mask-type: alpha;
+	mask: url(../img/ink-mask.png) 0 0/0 0 no-repeat;
+	-webkit-mask: url(../img/ink-mask.png) 0 0/0 0 no-repeat;
+	/* -webkit-mask-size: 0% 0%; */
+}
+/* .button-images{
+	background: url(./img/button-card.png) 0 0/100% 100% no-repeat !important;
+} */
+.anim#start-button{
+	visibility: visible;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	mask: url(../img/ink-mask.png) 0 0/2500% 100% no-repeat;
+	-webkit-mask: url(../img/ink-mask.png) 0 0/2500% 100% no-repeat;
+	-webkit-animation: mask-playzero-reverse 1.2s steps(24) 1 forwards;
+	/* -webkit-mask-size: 2500% 100%; */
 }
 
 .particules-container{

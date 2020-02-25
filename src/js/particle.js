@@ -118,10 +118,12 @@ const tw = carnet.offsetWidth;
 const th = carnet.offsetHeight;
 
 const progressSlider = document.getElementById("progressSlider");
+const buttonIntroMapButton =  document.querySelector("#button-intro-map button")
+const controls =  document.getElementById("controls")
 
 document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
 document.querySelector("#skip-intro").addEventListener('click', launchMap, false);
-document.querySelector("#button-intro-map button").addEventListener('click', launchMap, false);
+buttonIntroMapButton.addEventListener('click', launchMap, false);
 progressSlider.addEventListener("input", update);
 document.getElementById("pauseButton").addEventListener('click', function(){
   isPaused = !isPaused;
@@ -130,7 +132,7 @@ document.getElementById("pauseButton").addEventListener('click', function(){
     music.pause()
   } else {
     masterTimeline.play();
-    music.currentTime = masterTimeline.progress();
+    music.currentTime = masterTimeline.duration() * masterTimeline.progress();
     music.play()
   }
 }, false);
@@ -191,6 +193,7 @@ function launchIntro() {
     filter: "blur(6px)"
   })
   .set("#intro-dates", {display: "none"})
+  .set(buttonIntroMapButton, {display: "none"})
 
   // .set(".bg", {scale: 1, z: 600})
 
@@ -239,6 +242,7 @@ function launchIntro() {
           y: waypoints[4].translate.y,
           scale: 2.4
         }, "ending")
+      .to(buttonIntroMapButton, {display: "block"}, "ending+=4.2")
 
     /*
     .to(origin, 5, { left: waypoints[4].transformOrigin.left, top: waypoints[4].transformOrigin.top,
@@ -284,10 +288,12 @@ function launchMap() {
   const transition = gsap.timeline();
   transition.set(carnet, {})
   transition.to(intro, { duration: .1, delay: 0, display: "none", onComplete: killThemAll })
-    .to(startIntro, { duration: 1, delay: 0.2, opacity: 0 })
-    .to(blackBg, { duration: .3, delay: -0.5, opacity: 0, onComplete: function(){
+    .to(startIntro, { duration: 1, delay: 0.2, opacity: 0, onComplete: function() { blackBg.classList.add("anim"); } })
+    .to(controls, {opacity: 0, duration: .6})
+    .to(blackBg, { duration: .8, delay: 0.5, onComplete: function(){
       blackBg.style.display = "none";
       startIntro.style.display = "none";
+      controls.style.display = "none";
     } })
   initMap();
 }

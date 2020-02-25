@@ -45,7 +45,7 @@ export function initMap() {
   });
 
   map.on('load', function() {
-    playback(0);
+    // playback(0);
   });
 }
 
@@ -80,11 +80,7 @@ export const locations = {
 					'bearing': -8.9,
 					'zoom': 11.68,
 					'speed': 1.2
-				},
-				"photos": [
-					"IMAG0873.jpg",
-					"IMAG0875.jpg"
-				]
+				}
 			},
 			"geometry": {
 				'type': 'Point',

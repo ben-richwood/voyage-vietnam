@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" preserveAspectRatio="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="450px" height="100px" viewBox="0 0 450 100" enable-background="new 0 0 450 100" xml:space="preserve">
 <path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M276.625,9.125
 	c58.165-6.713,115.996-7.252,165.39-4.395"/>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M7.343,93.051
 	c66.061-42.135,170.251-70.478,260.991-83.01"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M199.5,32.167
+	c12.812-4.615,19.545-6.746,38.617-8.839c19.072-2.093,36.792-3.559,44.516-5.326c7.723-1.769,22.103-3.085,35.115-3.317"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M315.167,10.125
+	c2.833,0.542,10.334,2.542,13,3.708c-1,2.333-9.167,6.093-11.667,6.833"/>
 </svg>

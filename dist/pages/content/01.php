@@ -19,7 +19,6 @@
     <p class="capital">Valley, Ninh Binh</p>
     <p>On ne découvre le décor que le lendemain matin au réveil. On tourne sur le lac en companie de Amélie, une amie fraîchement rencontrés à Hanoi avec qui on a fait la route. En part alors pour une ballade en vélo. On se pose pour escalader un pain, et on trouve notre chemin jusqu'à un long escalier de pierre en haut duquel culmine un dragon de pierre.</p>
     <p>Cap sur Tam Coc, toujours armés de nos vélos. On se lance dans la ,ytique ballade en bateau, dont les cours d'eau passe sous les blocs de pain par endroit. Retour en vélo dans le décor qui s'assombrit avec la nuit.</p>
-    <button class="button-images" data-card="6">Voir les photos</button>
   </div>
 </div>
 
@@ -40,6 +39,7 @@
     <p>Nous repartons le lendemain et terminons les kilomètres qui nous séparent de Ha Giang dans la matinée On commence par un café pour chercher un hôtel où passer la nuit. Notre choix s'arrête sur un établisseent sur les hauteurs, avec piscine et plongeoire. L'arrêt est teporaire et on repart à l'ascension du point culminant de la vallée. Un café aménagé dans un bus trône en haut de la route. Nous y laissons les motos et terminons à pied, sous le cagnard.</p>
     <p>Sur la route du retour on s'arrête dans un immense parc où l'on peut y circuler en moto. On profite de l'accalmie pour appeler les parents et s'aventurer dans les amphitéâtres déserts qui s'offre aux visiteurs.</p>
     <p>On rentre alors à l'hôtel profiter du plongeoire pendant que la famille accueille ce qui semble êter un mariage. Epuisé, on se couche après une longue journée.</p>
+    <button class="button-images" data-card="10">Voir les photos</button>
   </div>
 </div>
 <div class="left-page"></div>
@@ -59,5 +59,77 @@
     <p>On prends la route au matin, parsemés de café réglementaire au passage de cols. Poussé par l'aventure, on emprunte un chemin de terre qui semble rejoindre la route principale sur les cartes. On posera les bécanes pour continuer à pied et escalader une colline.</p>
     <p>Dnog Van nous accueille en fin d'après midi ; on trouve rapidement un café pour y chercher un hostel sur internet. On y pose nos affaires et partons traverser les rizières à pied. La ville est un amoncellement de bordel urbain encerclé par les rizières et les montagnes.</p>
     <p>On passe prendre des bières que l'on déguste sur le toit, à la lumière des néon de l'hôtel.</p>
+  </div>
+</div>
+
+<div class="left-page"></div>
+<div class="right-page book-content">
+  <div class="inner-page">
+    <h1>Lung Cu</h1>
+    <em>13 juin</em>
+    <p>On roulse jusqu'à Lung Cu, le point le plus septentrional du Vietnam, où se dresse un immense phare, qui donne une vue sans pareil sur les vallées chinoises quelques kilomètres plus au nord.</p>
+    <p>On enchaine les cols et les lacets, et au détour de l'un des deux, la moto glisse et se couche sur la route. Plus de peur que de mal ; on remonte rapidement en selle, avec d'autant plus de prudence.<p>
+      <p>Sur la route, en contrbas, on aperçois un barrage où nous décidons de nous arrêter. On s'assoit sur la grève, et après seulement quelques minutes, l'alarme retentit. On rembrousse chemin et nous nous baignons en contrebas non loin d'un groupe d'enfants. On comprends alors que le barage est en train d'ouvrir les vannes : le niveau de la rivière monte rapidement et le courant s'intensifie. Tout le monde regagne rapidement les berges.</p>
+      <p>Plus loin, c'esst en vieux pont en métal qui pique notre curiosité où nous y prenons quelques photos.</p>
+    <p>Revenu à Dong Van, on trouve désinfectants et pansements dans une pharmacie. Bière sur le toit à nouveau et on se couche.</p>
+  </div>
+</div>
+
+<div class="left-page"></div>
+<div class="right-page book-content">
+  <div class="inner-page">
+    <h1>Cao Bang</h1>
+    <em>14 juin</em>
+    <p>Nous passons à l'hopital - plus haut dans la rue de notre hôtel. On prend alors la direction de Cao Bang. On passera la journée sur le scooter, entre pause repas et cafés. Cao Bang est la plus grande ville que l'on croise depuis le début du tour moto ; il nous faut tourner un peu pour trouver un café d'où chercher notre hôtel pour la nuit. On trouve une auberge non loin du fleuve. On y rencontre un couple sud africain / sibérien en train d'arnacher leur propre Honda XR.</p>
+    <p>On file manger car la nuit tombe. On tombe pendant un match de Ligue 1, et un groupe de vietnamien nous rejoint pour trinquer et prendre des selfies.</p>
+  </div>
+</div>
+
+<div class="left-page"></div>
+<div class="right-page book-content">
+  <div class="inner-page">
+    <h1>Ban Gioc - la frontière chinoise</h1>
+    <em>15 juin</em>
+    <p>On prends des forces autour de viennoiserie non loin de la rivière. On plie les affaires et on prend la route de Ban Gioc, frontière naturelle entre Chine et Vietnam, materialisée par une rivière et une des plus large chuttes d'eau au monde. Le temps est froid et humide, et on roule sous un crachin qui nous tiendra jusqu'à l'arrivé. On se gare et on accède à la cascade. La mauvaise météo n'aidant pas à la contemplation, on remonte rapidement et nous arrêtons à un temple perché sur une coline dominant la frontière.</p>
+    <p>On redémarre, et prenons la route des grottes. Les pins de calcaire géants en surface abrite des réseaux de galeries sous terre. Nous nous enfonçons dans un des ces pins. Le sentier balisé nous laisse explorer à notre guise avec pas mal de liberté.</p>
+    <p>On ressort, et Max ouvre la voie ; j'en profite pour prendre des photos des motos sur le "vif", entre routes de montagnes, forêt de bambous et chemins de terre.</p>
+  </div>
+</div>
+
+<div class="left-page"></div>
+<div class="right-page book-content">
+  <div class="inner-page">
+    <h1>/</h1>
+    <em>16 juin</em>
+    <p>Aucune note de cette journée - impossible de me rappeler ce qu'on a fait.</p>
+    <div class="">
+      <picture>
+        <source type="image/webp" srcset="./img/pics/IMAG0964.webp">
+        <source type="image/jpg" srcset="./img/pics/IMAG0964.jpg">
+        <img src="./img/pics/IMAG0964.jpg" alt="Img 1">
+      </picture>
+    </div>
+  </div>
+</div>
+
+<div class="left-page"></div>
+<div class="right-page book-content">
+  <div class="inner-page">
+    <h1>Be Be Lake</h1>
+    <em>17 juin</em>
+    <p>Cap sur Be Be Lake ! Nous roulons autour du lac jusqu'à rejoindre notre hostel. On s'attarde un peu sur la terrasse qui domine le lac. On part en ballade en moto et nous arrêtons en bord de route pour attaquer un sentier à pied dans la forêt qui enoure le lac. Une tour d'observation branlante culmine en haut, digne d'Uncharted ! On s'empresse de l'escalader et observons le panorama.</p>
+    <p>Retour à l'hostel, et on embarque pour un tour en bateau sous le soleil couchant de fin d'après-midi. On s'arrête 2 fois - dans un second lac à l'extrémité, puis sur une île surmonté d'un temple en plein milieu de Be Be.</p>
+    <p>Retour à l'hostel et discussion sur la terrasse</p>
+  </div>
+</div>
+
+<div class="left-page"></div>
+<div class="right-page book-content">
+  <div class="inner-page">
+    <h1>Retour à Hanoi</h1>
+    <em>18 - 19 juin</em>
+    <p>Nous ne sommes plus très loin de Hanoi. Il est temps de terminer la boucle, et de rejoindre la capitale. On s'arrêtera dans un garage Honda pour remettre les motos en état - changer l'huile, remettre la garde du frein qui bloque la poingné de frein, tordre le selecteur de vitesse et réaligner la fourche de la moto légrèment désaxée.</p>
+    <p>On s'arrête au golf qui donne sur le lac de Hanoi - en tong, Tshirts dégueulasses et shorts troués. On reprendra le même Pillow Hotel qu'à notre arrivé.</p>
+    <p>On prendra le bus de nuit pour rejoindre Da Nang.</p>
   </div>
 </div>
