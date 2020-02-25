@@ -37,7 +37,7 @@
 		#pauseButton{display: block; margin: .4rem auto;background-color: transparent;}
 		#pauseButton svg{max-height: 2rem;}
 		#pauseButton:hover{background-color: transparent;}
-		#offset-title{position: absolute;top:-2vw;left:2vw;width:80%;height:3rem;}
+		#offset-title{position: absolute;top: -12vw; left: -2vw;width:40%;height:3rem;}
 		#button-intro-map{
 			display:flex;align-items: center;position: absolute;bottom:10%;left:0; width: 100%; justify-content: center;
 		}

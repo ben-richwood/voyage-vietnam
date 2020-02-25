@@ -304,7 +304,8 @@ ul#page-list li span{}
 	display:block;
 	z-index: 100;
 	transform-style: preserve-3d;
-	perspective: 40em;
+	perspective: 130em;
+	transform: translateZ(100px);
 	background: #000;
 	/* overflow: hidden; */
 }

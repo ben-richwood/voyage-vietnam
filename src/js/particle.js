@@ -118,7 +118,7 @@ const tw = carnet.offsetWidth;
 const th = carnet.offsetHeight;
 
 const progressSlider = document.getElementById("progressSlider");
-const buttonIntroMapButton =  document.querySelector("#button-intro-map button")
+const buttonIntroMapButton =  document.querySelector("#start-button")
 const controls =  document.getElementById("controls")
 
 document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
@@ -188,8 +188,9 @@ function launchIntro() {
   masterTimeline.set(carnet, {
     x: waypoints[0].translate.x,
     y: waypoints[0].translate.y,
+    z: "200px",
     transformOrigin: waypoints[0].csr.center.string,
-    scale: 3,
+    scale: 3.5,
     filter: "blur(6px)"
   })
   .set("#intro-dates", {display: "none"})
@@ -199,71 +200,61 @@ function launchIntro() {
 
   masterTimeline.defaultEase = "power2.inOut";
   masterTimeline.to(startIntro, {duration: 1, opacity: 0, onComplete: animCarnet})
-
     .to(startIntro, {delay: .4, duration: .2, onComplete: launchMusic})
 
-    .addLabel("presents", "+=0")
+    .addLabel("presents", 1)
+    .addLabel("main-title", 4)
+    .addLabel("dates", 9)
+    .addLabel("ending", 15)
+
+    // go to presents
     .to(origin, 4, { left: waypoints[1].transformOrigin.left, top: waypoints[1].transformOrigin.top, ease: "power4.out", onUpdate: function() { updateOrigin(1) } }, "presents" )
-    .to(carnet, { duration: 1.2, filter: "blur(0px)", ease: "power1.inOut"}, "presents")
-    .to(carnet, { duration: 4, ease: "power4.out",
+    .to(carnet, { duration: 1.2, filter: "blur(0px)", ease: "power2.inOut"}, "presents")
+    .to(carnet, { duration: 3, delay: 1, ease: "expo.out",
         x: waypoints[1].translate.x,
         y: waypoints[1].translate.y,
-        scale: 3
+        scale: 2.4
       }, "presents")
-    .to(carnet, { duration: 5, ease: "power4.out", rotate: "-4deg"}, "presents-=1")
+    .to(carnet, { duration: 5, ease: "power4.out", rotate: "-4deg", rotateY: "-12deg", rotateZ: "-3deg"}, "presents")
 
-    .addLabel("main-title", "+=0")
-    .to(origin, 3, { left: waypoints[2].transformOrigin.left, top: waypoints[2].transformOrigin.top, ease: "power1.inOut", onUpdate: function() { updateOrigin(2) } }, "main-title" )
-    .to(carnet, { duration: 3, ease: "power1.inOut",
+    // go to main-title
+    .to(origin, 5, { left: waypoints[2].transformOrigin.left, top: waypoints[2].transformOrigin.top, ease: "power1.inOut", onUpdate: function() { updateOrigin(2) } }, "main-title" )
+    .to(carnet, { duration: 5, ease: "power1.inOut",
       x: waypoints[2].translate.x,
       y: waypoints[2].translate.y,
     }, "main-title")
-    .to(mainTitle, {duration: 3, scale: 1.065, ease: "power2.inOut", onStart: addClassToMainTitle}, "main-title+=2")
+    .to(carnet, { duration: 5, ease: "power4.out", rotateX: "6deg", rotateY: "15deg", rotateZ: "4deg"}, "presents+=1")
+    .to(mainTitle, {duration: 5, scale: 1.065, ease: "power2.inOut", onStart: addClassToMainTitle}, "main-title+=2")
+    .to(carnet, {duration: 5, scale: 2.6, ease: "power2.inOut"}, "main-title+=2")
 
-    .addLabel("dates", "+=0")
+    // go to intro dates
     .to(origin, 7, { left: waypoints[3].transformOrigin.left, top: waypoints[3].transformOrigin.top, ease: "power2.inOut",
       onUpdate: function() { updateOrigin(3) }
     }, "dates")
-    .to(carnet, {duration: 7, rotate: "-4deg", ease: "power2.inOut",
+    .to(carnet, {duration: 7,
+        rotateX: "-1deg", rotateY: "12deg", rotateZ: "-3deg",
+        ease: "power2.inOut",
         x: waypoints[3].translate.x,
         y: waypoints[3].translate.y,
-        scale: 2.4
+        scale: 3
       }, "dates")
       // .to("#intro-dates", {duration: .3, opacity: 1}, "dates+=4.3")
       .to("#intro-dates", {duration: 0, display: "flex"}, "dates+=5")
       .to(carnet, {duration: 1.2, onStart: function(){ document.getElementById("intro-dates").classList.add("anim"); }}, "dates+=5.5")
 
-      .addLabel("ending", "+=0")
+      // go to ending
       .to(origin, 7, { left: waypoints[4].transformOrigin.left, top: waypoints[4].transformOrigin.top, ease: "power2.inOut",
         onUpdate: function() { updateOrigin(4) }
       }, "ending")
-      .to(carnet, {duration: 7, rotate: "-4deg", ease: "power2.inOut",
+      .to(carnet, {duration: 7,
+        rotate: "-4deg", rotateY: "15deg", rotateZ: "-5deg",
+        ease: "power2.inOut",
           x: waypoints[4].translate.x,
           y: waypoints[4].translate.y,
           scale: 2.4
         }, "ending")
       .to(buttonIntroMapButton, {display: "block"}, "ending+=4.2")
 
-    /*
-    .to(origin, 5, { left: waypoints[4].transformOrigin.left, top: waypoints[4].transformOrigin.top,
-      onUpdate: function() { updateOrigin(4) }
-    }, "dates")
-    .to(carnet, {duration: 5, rotate: "3deg", ease: "power1.inOut",
-        x: waypoints[3].translate.x,
-        y: waypoints[3].translate.y,
-        scale: 1.8}, "dates")
-    .to("#intro-dates", {duration: 0, onComplete: function(){
-      document.getElementById("intro-dates").classList.add("anim");
-    }}, "dates")
-
-
-    .to(carnet, {duration: 6, delay: -0.5, z: 450, rotate: "-7deg", ease: "power2.inOut",
-        x: waypoints[4].translate.x,
-        y: waypoints[4].translate.y,
-        // onUpdate: function(){updateOrigin(4)},
-        transformOrigin: waypoints[4].csr.center.string,
-        scale: 2.8}, "dates")
-    */
 
     // +xPercent => vers la gauche
     // -xPercent => vers la droite
