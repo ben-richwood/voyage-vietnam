@@ -19,6 +19,7 @@
     <p class="capital">Valley, Ninh Binh</p>
     <p>On ne découvre le décor que le lendemain matin au réveil. On tourne sur le lac en companie de Amélie, une amie fraîchement rencontrés à Hanoi avec qui on a fait la route. En part alors pour une ballade en vélo. On se pose pour escalader un pain, et on trouve notre chemin jusqu'à un long escalier de pierre en haut duquel culmine un dragon de pierre.</p>
     <p>Cap sur Tam Coc, toujours armés de nos vélos. On se lance dans la ,ytique ballade en bateau, dont les cours d'eau passe sous les blocs de pain par endroit. Retour en vélo dans le décor qui s'assombrit avec la nuit.</p>
+    <button class="button-images" data-card="6">Voir les photos</button>
   </div>
 </div>
 
@@ -78,7 +79,7 @@
 <div class="left-page"></div>
 <div class="right-page book-content">
   <div class="inner-page">
-    <h1>Cao Bang</h1>
+    <h1>Bảo Lạc, province de Cao Bang</h1>
     <em>14 juin</em>
     <p>Nous passons à l'hopital - plus haut dans la rue de notre hôtel. On prend alors la direction de Cao Bang. On passera la journée sur le scooter, entre pause repas et cafés. Cao Bang est la plus grande ville que l'on croise depuis le début du tour moto ; il nous faut tourner un peu pour trouver un café d'où chercher notre hôtel pour la nuit. On trouve une auberge non loin du fleuve. On y rencontre un couple sud africain / sibérien en train d'arnacher leur propre Honda XR.</p>
     <p>On file manger car la nuit tombe. On tombe pendant un match de Ligue 1, et un groupe de vietnamien nous rejoint pour trinquer et prendre des selfies.</p>
@@ -88,7 +89,7 @@
 <div class="left-page"></div>
 <div class="right-page book-content">
   <div class="inner-page">
-    <h1>Ban Gioc - la frontière chinoise</h1>
+    <h1>Les chutes de Ban Gioc - la frontière chinoise</h1>
     <em>15 juin</em>
     <p>On prends des forces autour de viennoiserie non loin de la rivière. On plie les affaires et on prend la route de Ban Gioc, frontière naturelle entre Chine et Vietnam, materialisée par une rivière et une des plus large chuttes d'eau au monde. Le temps est froid et humide, et on roule sous un crachin qui nous tiendra jusqu'à l'arrivé. On se gare et on accède à la cascade. La mauvaise météo n'aidant pas à la contemplation, on remonte rapidement et nous arrêtons à un temple perché sur une coline dominant la frontière.</p>
     <p>On redémarre, et prenons la route des grottes. Les pins de calcaire géants en surface abrite des réseaux de galeries sous terre. Nous nous enfonçons dans un des ces pins. Le sentier balisé nous laisse explorer à notre guise avec pas mal de liberté.</p>

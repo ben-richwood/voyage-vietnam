@@ -2,11 +2,9 @@ import gsap from "gsap";
 window.$ = window.jQuery = require('jquery');
 // require('jquery-ui/ui/widgets/draggable');
 import displace from 'displacejs';
-
 require("./turn.min.js");
-
-require("./particle.js");
-import { map, initMap, locations } from "./map.js"
+import { map, initMap, locations, goTo } from "./map.js"
+require("./intro.js");
 
 const blackScreen = document.getElementById("blackScreen");
 const cardDeck = document.getElementById("cardDeck");
@@ -33,16 +31,16 @@ function loadApp() {
 
 }
 
-function goTo(p) {
-	$('.flipbook').turn('page', p);
-	let loc = locations.features.find(e => e.properties.id === p)
-	if (loc === undefined) return
-	let camera = {
-		center: loc.geometry.coordinates,
-		...loc.properties.camera
-	}
-	map.flyTo(camera);
-}
+// function goTo(p) {
+// 	$('.flipbook').turn('page', p);
+// 	let loc = locations.features.find(e => e.properties.id === p)
+// 	if (loc === undefined) return
+// 	let camera = {
+// 		center: loc.geometry.coordinates,
+// 		...loc.properties.camera
+// 	}
+// 	map.flyTo(camera);
+// }
 
 const nextPageButton = document.getElementById("next-page");
 const prevPageButton = document.getElementById("prev-page");

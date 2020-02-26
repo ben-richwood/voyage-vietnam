@@ -1,4 +1,20 @@
+window.$ = window.jQuery = require('jquery');
+require("./turn.min.js");
 export let map;
+const flipbook = document.querySelector(".flipbook");
+
+export function goTo(p) {
+  // flipbook.turn('page', p);
+  $(".flipbook").turn('page', p);
+  let loc = locations.features.find(e => e.properties.id === p)
+  if (loc === undefined) return
+  let camera = {
+    center: loc.geometry.coordinates,
+    speed: 0.3,
+    ...loc.properties.camera
+  }
+  map.flyTo(camera);
+}
 
 export function initMap() {
   mapboxgl.accessToken = 'pk.eyJ1IjoicmljaHdvb2QiLCJhIjoiY2p0eWlzdG9oMDE3cDRlcDlqOWVxbmU1MiJ9.Xx8OH5XyqXiTgUNGnsn1Qg';
@@ -63,7 +79,7 @@ export const locations = {
 					'speed': 1.2
 				},
 				"photos": [
-					"IMAG0873.jpg",
+					"hanoi_streets.jpg",
 					"IMAG0875.jpg"
 				]
 			},
@@ -80,7 +96,10 @@ export const locations = {
 					'bearing': -8.9,
 					'zoom': 11.68,
 					'speed': 1.2
-				}
+				},
+				"photos": [
+					"ninh_binh_edited.jpg"
+				]
 			},
 			"geometry": {
 				'type': 'Point',
@@ -97,7 +116,7 @@ export const locations = {
 					'speed': 1.2
 				},
 				"photos": [
-					"IMAG0873.jpg",
+					"HG_bus_edited.jpg",
 					"IMAG0875.jpg"
 				]
 			},
@@ -123,6 +142,66 @@ export const locations = {
 			"geometry": {
 				'type': 'Point',
 				'coordinates': [105.362378, 23.278154]
+			}
+		}, {
+			'type': 'Feature',
+			'properties': {
+				'id': 16,
+				'name': "Lung Cu",
+				'camera': {
+					'bearing': 25.3,
+					'zoom': 11.5,
+					'speed': 1.2
+				}
+			},
+			"geometry": {
+				'type': 'Point',
+				'coordinates': [105.316085, 23.362381]
+			}
+		}, {
+			'type': 'Feature',
+			'properties': {
+				'id': 18,
+				'name': "Bảo Lạc",
+				'camera': {
+					'bearing': 25.3,
+					'zoom': 11.5,
+					'speed': 1.2
+				}
+			},
+			"geometry": {
+				'type': 'Point',
+				'coordinates': [106.25780541993414, 22.665810782850087]
+			}
+		}, {
+			'type': 'Feature',
+			'properties': {
+				'id': 20,
+				'name': "Ban Gioc",
+				'camera': {
+					'bearing': 25.3,
+					'zoom': 11.5,
+					'speed': 1.2
+				}
+			},
+			"geometry": {
+				'type': 'Point',
+				'coordinates': [106.72411777939311, 22.855185127386065]
+			}
+		}, {
+			'type': 'Feature',
+			'properties': {
+				'id': 24,
+				'name': "Ba Bể Lake",
+				'camera': {
+					'bearing': 25.3,
+					'zoom': 11.5,
+					'speed': 1.2
+				}
+			},
+			"geometry": {
+				'type': 'Point',
+				'coordinates': [105.62146872103307, 22.405574239499998]
 			}
 		}
 	]

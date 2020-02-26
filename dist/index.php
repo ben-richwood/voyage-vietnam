@@ -104,7 +104,7 @@
 				<div class="notebook__right-page">
 					<div id="intro-dates">
 						<div style="align-self:flex-end;">Saigon</div>
-						<div style="flex-basis: calc(100% - 30%);align-self: center;">Juin 2018</div>
+						<div style="flex-basis: calc(100% - 30%);align-self:center;background: transparent url(./img/button-card-black.png)50% 50% / 70% 100% no-repeat; color: white;">Juin 2018</div>
 						<div style="align-self:flex-start;">Hanoi</div>
 					</div>
 					<div id="button-intro-map">
@@ -152,7 +152,7 @@
 	<div class="container">
 		<button class="toc-page" id="toc-page"><img src="./img/arrow-back-toc.svg" alt="arrow page back"></button>
 		<button class="prev-page" id="prev-page"><img src="./img/arrow-back.svg" alt="arrow page back"></button>
-		<div class="next-page" id="next-page" onClick="nextPage()"></div>
+		<div class="next-page" id="next-page"></div>
 		<div class="flipbook">
 			<div class="cover"></div>
 			<!-- <div class="left-cover"></div> -->
@@ -168,7 +168,7 @@
 						<li data-page="12">Sur la route de Dong Van<span>10 juin</span></li>
 						<li data-page="14">Dong Van<span>11-12 juin</span></li>
 						<li data-page="16">Direction Lung Cu<span>13 juin</span></li>
-						<li data-page="18">Cao Bang<span>14 juin</span></li>
+						<li data-page="18">Bảo Lạc<span>14 juin</span></li>
 						<li data-page="20">Ban Gioc - la frontière chinoiseg<span>15 juin</span></li>
 						<li data-page="22">??<span>16 juin</span></li>
 						<li data-page="24">Be Be Lake<span>17 juin</span></li>

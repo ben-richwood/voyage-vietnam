@@ -56,7 +56,7 @@ var createParticles = function() {
   gsap.set(allDots[i],{
     x:Random(w),
     y:0 ,
-    scale:getRandom(particleSizeMin, particleSizeMax) + 0.025,
+    scale:getRandom(particleSizeMin, particleSizeMax) + 0.045,
     fill:particleColor});
    animm(allDots[i]);
    }
@@ -108,6 +108,7 @@ function launchMusic() {
 }
 
 function animCarnet(){
+  startIntro.style.display = "none";
   let carnetContainer = document.getElementById("carnet--container");
   blackBg.classList.add("anim");
   carnetContainer.querySelector(".notebook__left-page").classList.add("anim");
@@ -118,12 +119,16 @@ const tw = carnet.offsetWidth;
 const th = carnet.offsetHeight;
 
 const progressSlider = document.getElementById("progressSlider");
-const buttonIntroMapButton =  document.querySelector("#start-button")
+const buttonIntroMapButton =  document.getElementById("start-button")
 const controls =  document.getElementById("controls")
 
 document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
 document.querySelector("#skip-intro").addEventListener('click', launchMap, false);
-buttonIntroMapButton.addEventListener('click', launchMap, false);
+buttonIntroMapButton.addEventListener('click', function(){
+  // gsap.killTweensOf("#carnet");
+  masterTimeline.kill();
+  launchMap();
+}, false);
 progressSlider.addEventListener("input", update);
 document.getElementById("pauseButton").addEventListener('click', function(){
   isPaused = !isPaused;
@@ -138,13 +143,21 @@ document.getElementById("pauseButton").addEventListener('click', function(){
 }, false);
 
 function update(){
+  isPaused = true;
+  music.pause()
   masterTimeline.progress(progressSlider.value); // change the timeline’s
+  masterTimeline.pause();
+  music.currentTime = masterTimeline.duration() * masterTimeline.progress();
+  // music.play()
 }
+
+function adjustUI() {
+  progressSlider.value = masterTimeline.progress();
+}
+
 
 // place all active animations in one timeline
 // var tl = TimelineLite.exportRoot();
-
-// get element location on page
 
 let waypoints = [];
 let counter = 0
@@ -188,9 +201,9 @@ function launchIntro() {
   masterTimeline.set(carnet, {
     x: waypoints[0].translate.x,
     y: waypoints[0].translate.y,
-    z: "200px",
+    z: "300px",
     transformOrigin: waypoints[0].csr.center.string,
-    scale: 3.5,
+    scale: 3,
     filter: "blur(6px)"
   })
   .set("#intro-dates", {display: "none"})
@@ -199,8 +212,7 @@ function launchIntro() {
   // .set(".bg", {scale: 1, z: 600})
 
   masterTimeline.defaultEase = "power2.inOut";
-  masterTimeline.to(startIntro, {duration: 1, opacity: 0, onComplete: animCarnet})
-    .to(startIntro, {delay: .4, duration: .2, onComplete: launchMusic})
+  masterTimeline.to(startIntro, {duration: 1, delay: .6, opacity: 0, onComplete: launchMusic, onStart: animCarnet})
 
     .addLabel("presents", 1)
     .addLabel("main-title", 4)
@@ -209,13 +221,15 @@ function launchIntro() {
 
     // go to presents
     .to(origin, 4, { left: waypoints[1].transformOrigin.left, top: waypoints[1].transformOrigin.top, ease: "power4.out", onUpdate: function() { updateOrigin(1) } }, "presents" )
+    .to(carnet, {duration: .8, filter: "blur(2px)"}, "presents+=0.2")
     .to(carnet, { duration: 1.2, filter: "blur(0px)", ease: "power2.inOut"}, "presents")
     .to(carnet, { duration: 3, delay: 1, ease: "expo.out",
         x: waypoints[1].translate.x,
         y: waypoints[1].translate.y,
-        scale: 2.4
+        scale: 2.9
       }, "presents")
-    .to(carnet, { duration: 5, ease: "power4.out", rotate: "-4deg", rotateY: "-12deg", rotateZ: "-3deg"}, "presents")
+    .to(carnet, { duration: 5, ease: "power4.out", rotate: "-4deg", rotateY: "-12deg", rotateZ: "-3deg", onComplete: function() {blackBg.style.display = "none";}}, "presents")
+    .to(carnet, {duration: .8, filter: "blur(0px)"}, "main-title-=0.4")
 
     // go to main-title
     .to(origin, 5, { left: waypoints[2].transformOrigin.left, top: waypoints[2].transformOrigin.top, ease: "power1.inOut", onUpdate: function() { updateOrigin(2) } }, "main-title" )
@@ -224,8 +238,8 @@ function launchIntro() {
       y: waypoints[2].translate.y,
     }, "main-title")
     .to(carnet, { duration: 5, ease: "power4.out", rotateX: "6deg", rotateY: "15deg", rotateZ: "4deg"}, "presents+=1")
-    .to(mainTitle, {duration: 5, scale: 1.065, ease: "power2.inOut", onStart: addClassToMainTitle}, "main-title+=2")
-    .to(carnet, {duration: 5, scale: 2.6, ease: "power2.inOut"}, "main-title+=2")
+    .to(mainTitle, {duration: 5, scale: 1.045, ease: "power2.inOut", onStart: addClassToMainTitle}, "main-title+=2")
+    .to(carnet, {duration: 5, scale: 1.8, ease: "power2.inOut"}, "main-title+=2")
 
     // go to intro dates
     .to(origin, 7, { left: waypoints[3].transformOrigin.left, top: waypoints[3].transformOrigin.top, ease: "power2.inOut",
@@ -236,7 +250,7 @@ function launchIntro() {
         ease: "power2.inOut",
         x: waypoints[3].translate.x,
         y: waypoints[3].translate.y,
-        scale: 3
+        scale: 1.8
       }, "dates")
       // .to("#intro-dates", {duration: .3, opacity: 1}, "dates+=4.3")
       .to("#intro-dates", {duration: 0, display: "flex"}, "dates+=5")
@@ -251,7 +265,7 @@ function launchIntro() {
         ease: "power2.inOut",
           x: waypoints[4].translate.x,
           y: waypoints[4].translate.y,
-          scale: 2.4
+          scale: 1.9
         }, "ending")
       .to(buttonIntroMapButton, {display: "block"}, "ending+=4.2")
 
@@ -268,10 +282,6 @@ function updateOrigin(i) {
   gsap.set(carnet, {
     transformOrigin: origin.left + "px " + origin.top + "px", ease: "power2.inOut"
   }, "+=0");
-}
-
-function adjustUI() {
-  progressSlider.value = masterTimeline.progress();
 }
 
 function launchMap() {
