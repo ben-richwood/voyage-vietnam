@@ -31,17 +31,6 @@ function loadApp() {
 
 }
 
-// function goTo(p) {
-// 	$('.flipbook').turn('page', p);
-// 	let loc = locations.features.find(e => e.properties.id === p)
-// 	if (loc === undefined) return
-// 	let camera = {
-// 		center: loc.geometry.coordinates,
-// 		...loc.properties.camera
-// 	}
-// 	map.flyTo(camera);
-// }
-
 const nextPageButton = document.getElementById("next-page");
 const prevPageButton = document.getElementById("prev-page");
 const tocPageButton = document.getElementById("toc-page");
@@ -50,7 +39,7 @@ const closeCardButton = document.querySelector("#close-card button");
 nextPageButton.addEventListener('click', nextPage, false);
 prevPageButton.addEventListener('click', prevPage, false);
 tocPageButton.addEventListener('click', function(){
-  goTo(3);
+  goTo(4);
 }, false);
 
 // Autoloading function to add the listeners:
@@ -71,12 +60,9 @@ closeCardButton.addEventListener('click', closeCardDeck, false);
 
 // Get the element, add a click listener...
 document.getElementById("page-list").addEventListener("click", function(e) {
-	// e.target is the clicked element!
-	// If it was a list item
 	if(e.target && e.target.nodeName == "LI") {
-		// List item found!  Output the ID!
     var pageNumber = e.target.getAttribute("data-page");
-		console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
+		// console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
     goTo(pageNumber);
 	}
 });
@@ -97,10 +83,6 @@ function prevPage() {
 	if (currentPage % 2 != 0) currentPage--;
 	if (currentPage > 4) goTo(currentPage - 2)
 	// $(".flipbook").turn("previous");
-}
-
-function backToTOC(){
-	$('.flipbook').turn('page', 1);
 }
 
 function spreadPhotos (f) {

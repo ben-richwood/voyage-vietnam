@@ -9,16 +9,32 @@ body{
 	height:100vh;
 	position:relative;
 	width: 100%;
+	/* position: relative; */
 }
 
 h1{
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Sriracha', cursive;
+}
+
+.flipbook-viewport h1{
+	margin-bottom: .6rem;
+}
+
+.flipbook-viewport h1 ~ em{
+	font-weight: 700;
+	color: #444;
+	display: block;
+	font-size: 1.2rem;
+	/* text-align: center; */
+}
+.flipbook-viewport h1 ~ em:before{
+	content: "- ";
 }
 
 button{
 	/* background-color: white; */
 	border: 5px solid rgba(0, 0, 0, 0.3);
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Sriracha', cursive;
 	font-size: 1.3rem;
 	display: block;
 	/* z-index: 101; */
@@ -62,20 +78,23 @@ button:hover{
 }
 .marker > div {
 	border: 0;
-  border-top: 4px solid hsla(34, 24%, 36%, 0.92);
-  border-radius: 2px;
-  transform: translateY(-10px);
-  padding: .4rem 2rem .8rem;
-  background-color: hsla(34, 50%, 35%, 0.06);
-  font-size: 1.9rem;
-  font-family: 'Permanent Marker', cursive;
-  color: hsla(34, 24%, 36%, 0.92);
+	/* border-top: 4px solid hsla(34, 24%, 36%, 0.92); */
+	border-radius: 2px;
+	transform: translateY(-10px);
+	padding: .4rem 2rem .8rem;
+	/* background-color: hsla(34, 50%, 35%, 0.06); */
+	font-size: 1.9rem;
+	font-family: 'Sriracha', cursive;
+	color: white;
+	background: transparent url(../img/button-card-black.png) 50% 50% / 100% 100% no-repeat;
+	box-sizing: content-box;
 }
 
 .flipbook-viewport{
 	overflow:hidden;
 	width:100%;
 	height:100vh;
+	/* display: none; */
 }
 
 .next-page{
@@ -94,12 +113,40 @@ button:hover{
 	background-color: rgba(200,200,200,.8);
 	transition: opacity .2s ease;
 }
-.next-page:hover{
+.start .next-page:hover{
 	opacity: 1;
 	transition: opacity .2s ease;
 	background-image: url(../img/arrows.png);
   background-position: -38px 314px;
   background-repeat: no-repeat;
+}
+
+.start .next-page{
+	animation-name: shim;
+	animation-duration: .3s;
+	animation-timing-function: ease-out;
+	animation-delay: 2s;
+	animation-direction: alternate;
+	animation-iteration-count: 6;
+	animation-fill-mode: backwards;
+	animation-play-state: running;
+}
+
+@keyframes shim {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes shim {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes shim {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes shim {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .toc-page{
@@ -204,8 +251,8 @@ ul#page-list li span{}
 	box-shadow: 0 2.1px 8.3px rgba(0, 0, 0, 0.014), 0 5.8px 22.9px rgba(0, 0, 0, 0.026), 0 13.9px 55.2px rgba(0, 0, 0, 0.04), 0 46px 183px rgba(0, 0, 0, 0.07);
 }
 .card img{
-	max-width: 440px;
-	/* max-height: 360px; */
+	max-width: 40vw;
+	max-height: 60vh;
 	transform-origin: 50% 50%;
 }
 
@@ -251,6 +298,11 @@ ul#page-list li span{}
 	transform: rotate(-3deg) scale(0.9);
 	border: 17px solid white;
 	box-sizing: border-box;
+}
+
+.inner-page img.no-frame{
+	border:0;
+	transform: 0;
 }
 
 .flipbook .page{
@@ -317,8 +369,9 @@ ul#page-list li span{}
 	height:100%;
 	position:relative;
 	display:block;
-	z-index: 100;
+	z-index: 203;
 	pointer-events: none;
+	transform: translateZ(200px);
 }
 
 .particle{
@@ -545,14 +598,13 @@ ul#page-list li span{}
 }
 
 .bg{
-	/* width: 200%; */
-	width: 100%;
 	perspective: 4em;
-	height: 100%;
 	background-color:black;
 	position: absolute;
 	top: 0;
-	left: 0%;
+	left: 0;
+	height: 100%;
+	width: 100%;
 	z-index: 201;
 	-webkit-mask: url(../img/ink-mask.png);
 	/*-webkit-mask: url(https://veuwer.com/i/3fxb.png);*/
@@ -580,7 +632,7 @@ ul#page-list li span{}
 	box-sizing: border-box;
 	padding: 2rem 1rem;
 }
-.notebook__left-page hr{
+hr{
 	width: 80%;
 	margin: 0 auto;
 	border: 0;
@@ -589,6 +641,9 @@ ul#page-list li span{}
 	background: transparent url(../img/hr.svg) 0 0/100% auto no-repeat;
 	transform-origin: 0 0;
 	transform: scaleX(0);
+}
+.flipbook-viewport hr{
+	transform: scaleX(1);
 }
 .notebook__left-page .title{
 	font-size: 2rem;

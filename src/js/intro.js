@@ -56,7 +56,7 @@ var createParticles = function() {
   gsap.set(allDots[i],{
     x:Random(w),
     y:0 ,
-    scale:getRandom(particleSizeMin, particleSizeMax) + 0.045,
+    scale:getRandom(particleSizeMin, particleSizeMax) + 0.075,
     fill:particleColor});
    animm(allDots[i]);
    }
@@ -102,7 +102,6 @@ function addClassToMainTitle() {
   mainTitle.className = "show-menu";
 }
 
-// createParticles()
 function launchMusic() {
   music.play()
 }
@@ -221,15 +220,13 @@ function launchIntro() {
 
     // go to presents
     .to(origin, 4, { left: waypoints[1].transformOrigin.left, top: waypoints[1].transformOrigin.top, ease: "power4.out", onUpdate: function() { updateOrigin(1) } }, "presents" )
-    .to(carnet, {duration: .8, filter: "blur(2px)"}, "presents+=0.2")
-    .to(carnet, { duration: 1.2, filter: "blur(0px)", ease: "power2.inOut"}, "presents")
     .to(carnet, { duration: 3, delay: 1, ease: "expo.out",
         x: waypoints[1].translate.x,
         y: waypoints[1].translate.y,
         scale: 2.9
       }, "presents")
+    .to(carnet, {duration: .8, filter: "blur(0px)"}, "presents+=0.6")
     .to(carnet, { duration: 5, ease: "power4.out", rotate: "-4deg", rotateY: "-12deg", rotateZ: "-3deg", onComplete: function() {blackBg.style.display = "none";}}, "presents")
-    .to(carnet, {duration: .8, filter: "blur(0px)"}, "main-title-=0.4")
 
     // go to main-title
     .to(origin, 5, { left: waypoints[2].transformOrigin.left, top: waypoints[2].transformOrigin.top, ease: "power1.inOut", onUpdate: function() { updateOrigin(2) } }, "main-title" )
@@ -239,7 +236,7 @@ function launchIntro() {
     }, "main-title")
     .to(carnet, { duration: 5, ease: "power4.out", rotateX: "6deg", rotateY: "15deg", rotateZ: "4deg"}, "presents+=1")
     .to(mainTitle, {duration: 5, scale: 1.045, ease: "power2.inOut", onStart: addClassToMainTitle}, "main-title+=2")
-    .to(carnet, {duration: 5, scale: 1.8, ease: "power2.inOut"}, "main-title+=2")
+    .to(carnet, {duration: 5, scale: 1.8, ease: "power2.inOut"}, "main-title-=2")
 
     // go to intro dates
     .to(origin, 7, { left: waypoints[3].transformOrigin.left, top: waypoints[3].transformOrigin.top, ease: "power2.inOut",
@@ -295,6 +292,7 @@ function launchMap() {
       blackBg.style.display = "none";
       startIntro.style.display = "none";
       controls.style.display = "none";
+      document.querySelector(".flipbook-viewport").classList.add("start");
     } })
   initMap();
 }

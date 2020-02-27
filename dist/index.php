@@ -5,7 +5,7 @@
 <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Kalam:300|Permanent+Marker&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kalam:300|Sriracha&display=swap" rel="stylesheet">
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 
 	<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
@@ -154,25 +154,39 @@
 		<button class="prev-page" id="prev-page"><img src="./img/arrow-back.svg" alt="arrow page back"></button>
 		<div class="next-page" id="next-page"></div>
 		<div class="flipbook">
-			<div class="cover"></div>
+			<div class="cover">
+			</div>
 			<!-- <div class="left-cover"></div> -->
+			<div class="left-page"></div>
+			<div class="right-page table-contents">
+				<div class="inner-page">
+					<h1>Notes</h1>
+					<div class="">
+						<p>Bienvenu dans ce journal de bord, récit de nos aventures passées dans la boucle de Ha Giang dans le nord Vietnam en juin 2018 !</p>
+						<p>Le carnet te rappelle bièvement ce qu'on a fait jour après jour, tandis que la carte te montrera par où on est passé.</p>
+						<p>Tu peux utiliser la chronologie de la page suivante pour sauter directement à une étape particulière, où alors cliquer sur les villes de la carte pour te rendre à la  page correspondante.</p>
+						<p>Et des photos sont présentes sur certaines étapes - via le bouton en dessous du texte. Et tu peux replacer les images en les glissant-déposant.</p>
+						<p>Tu peux utiliser les fleches du claviers pour naviguer entre les pages</p>
+					</div>
+				</div>
+			</div>
 			<div class="left-page"></div>
 			<div class="right-page table-contents">
 				<div class="inner-page">
 					<h1>Chronologie</h1>
 					<ul id="page-list">
-						<li data-page="4">Hanoi <span>5-6 juin</span></li>
-						<li data-page="6"><span>Ninh Binh</span><span>7 juin</span></li>
-						<li data-page="8">Sur la route de Ha Giang<span>8 juin</span></li>
-						<li data-page="10">Ha Giang<span>9 juin</span></li>
-						<li data-page="12">Sur la route de Dong Van<span>10 juin</span></li>
-						<li data-page="14">Dong Van<span>11-12 juin</span></li>
-						<li data-page="16">Direction Lung Cu<span>13 juin</span></li>
-						<li data-page="18">Bảo Lạc<span>14 juin</span></li>
-						<li data-page="20">Ban Gioc - la frontière chinoiseg<span>15 juin</span></li>
-						<li data-page="22">??<span>16 juin</span></li>
-						<li data-page="24">Be Be Lake<span>17 juin</span></li>
-						<li data-page="26">Retour à Hanoi<span>18 - 19 juin</span></li>
+						<li data-page="6">Hanoi <span>5-6 juin</span></li>
+						<li data-page="8"><span>Ninh Binh</span><span>7 juin</span></li>
+						<li data-page="10">Sur la route de Ha Giang<span>8 juin</span></li>
+						<li data-page="12">Ha Giang<span>9 juin</span></li>
+						<li data-page="14">Le sentier dans les montagnes<span>10 juin</span></li>
+						<li data-page="16">Dong Van<span>11-12 juin</span></li>
+						<li data-page="18">Lung Cu<span>13 juin</span></li>
+						<li data-page="20">Bảo Lạc<span>14 juin</span></li>
+						<li data-page="22">Ban Gioc - la frontière chinoiseg<span>15 juin</span></li>
+						<li data-page="24">??<span>16 juin</span></li>
+						<li data-page="26">Ba Bể Lake<span>17 juin</span></li>
+						<li data-page="28">Retour à Hanoi<span>18 - 19 juin</span></li>
 					</ul>
 				</div>
 			</div>

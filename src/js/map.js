@@ -4,10 +4,13 @@ export let map;
 const flipbook = document.querySelector(".flipbook");
 
 export function goTo(p) {
-  // flipbook.turn('page', p);
-  $(".flipbook").turn('page', p);
-  let loc = locations.features.find(e => e.properties.id === p)
-  if (loc === undefined) return
+  let currentPage = $(".flipbook").turn("page");
+  let targetPage = parseInt(p);
+  if (targetPage % 2 != 0) targetPage++;
+  console.log("currentPage", currentPage, targetPage);
+  $(".flipbook").turn('page', targetPage);
+  let loc = locations.features.find(e => e.properties.id === targetPage)
+  if (loc === undefined || loc.geometry === undefined) return
   let camera = {
     center: loc.geometry.coordinates,
     speed: 0.3,
@@ -35,29 +38,28 @@ export function initMap() {
 
   // add markers to map
   locations.features.forEach(function(marker) {
-    console.log(marker);
-    // create a DOM element for the marker
-    let el = document.createElement('div');
-    let cityName = document.createElement('div');
-    cityName.innerHTML = marker.properties.name
-    el.className = 'marker';
-    let img = document.createElement('img');
-    img.style.width = '40px';
-    img.style.height = '30px';
-    img.src = "./img/city_marker.svg"
-    el.appendChild(img)
-    el.appendChild(cityName)
+    if (marker.geometry) {
+      // create a DOM element for the marker
+      let el = document.createElement('div');
+      let cityName = document.createElement('div');
+      cityName.innerHTML = marker.properties.name
+      el.className = 'marker';
+      let img = document.createElement('img');
+      img.style.width = '40px';
+      img.style.height = '30px';
+      img.src = "./img/city_marker.svg"
+      el.appendChild(img)
+      el.appendChild(cityName)
 
-    el.addEventListener('click', function() {
-      // window.alert(marker.properties.message);
-      // map.flyTo(marker.camera)
-      goTo(marker.properties.id)
-    });
+      el.addEventListener('click', function() {
+        goTo(marker.properties.id)
+      });
 
-    // add marker to map
-    new mapboxgl.Marker(el)
-    .setLngLat(marker.geometry.coordinates)
-    .addTo(map);
+      // add marker to map
+      new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .addTo(map);
+      }
   });
 
   map.on('load', function() {
@@ -71,7 +73,7 @@ export const locations = {
 		{
 			'type': 'Feature',
 			'properties': {
-				'id': 4,
+				'id': 6,
 				'name': "Hanoi",
 				'camera': {
 					'zoom': 12.21,
@@ -79,8 +81,8 @@ export const locations = {
 					'speed': 1.2
 				},
 				"photos": [
-					"hanoi_streets.jpg",
-					"IMAG0875.jpg"
+					"hanoi_streets.webp",
+					"moto2.webp"
 				]
 			},
 			'geometry': {
@@ -90,7 +92,7 @@ export const locations = {
 		}, {
 			'type': 'Feature',
 			'properties': {
-				'id': 6,
+				'id': 8,
 				'name': "Ninh Binh",
 				'camera': {
 					'bearing': -8.9,
@@ -98,7 +100,7 @@ export const locations = {
 					'speed': 1.2
 				},
 				"photos": [
-					"ninh_binh_edited.jpg"
+					"ninh_binh_edited.webp"
 				]
 			},
 			"geometry": {
@@ -109,6 +111,15 @@ export const locations = {
 			'type': 'Feature',
 			'properties': {
 				'id': 10,
+				'name': "Sentier dans les montagnes",
+				"photos": [
+					"three_pic.webp"
+				]
+			},
+		}, {
+			'type': 'Feature',
+			'properties': {
+				'id': 12,
 				'name': "Ha Giang",
 				'camera': {
 					'bearing': 25.3,
@@ -116,7 +127,7 @@ export const locations = {
 					'speed': 1.2
 				},
 				"photos": [
-					"HG_bus_edited.jpg",
+					"HG_bus_edited.webp",
 					"IMAG0875.jpg"
 				]
 			},
@@ -127,7 +138,7 @@ export const locations = {
 		}, {
 			'type': 'Feature',
 			'properties': {
-				'id': 14,
+				'id': 16,
 				'name': "Dong Van",
 				'camera': {
 					'bearing': 25.3,
@@ -146,8 +157,8 @@ export const locations = {
 		}, {
 			'type': 'Feature',
 			'properties': {
-				'id': 16,
-				'name': "Lung Cu",
+				'id': 18,
+				'name': "Lũng Cú",
 				'camera': {
 					'bearing': 25.3,
 					'zoom': 11.5,
@@ -161,7 +172,7 @@ export const locations = {
 		}, {
 			'type': 'Feature',
 			'properties': {
-				'id': 18,
+				'id': 20,
 				'name': "Bảo Lạc",
 				'camera': {
 					'bearing': 25.3,
@@ -176,13 +187,16 @@ export const locations = {
 		}, {
 			'type': 'Feature',
 			'properties': {
-				'id': 20,
+				'id': 22,
 				'name': "Ban Gioc",
 				'camera': {
 					'bearing': 25.3,
 					'zoom': 11.5,
-					'speed': 1.2
-				}
+					'speed': 1.2,
+				},
+        "photos": [
+          "ban_gioc_waterfall.webp"
+        ]
 			},
 			"geometry": {
 				'type': 'Point',
@@ -191,13 +205,17 @@ export const locations = {
 		}, {
 			'type': 'Feature',
 			'properties': {
-				'id': 24,
+				'id': 26,
 				'name': "Ba Bể Lake",
 				'camera': {
 					'bearing': 25.3,
 					'zoom': 11.5,
 					'speed': 1.2
-				}
+				},
+        "photos": [
+          "bebe_lake_tower_eidted.jpg",
+          "bebe_lake_edited.webp"
+        ]
 			},
 			"geometry": {
 				'type': 'Point',
