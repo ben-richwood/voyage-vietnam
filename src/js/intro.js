@@ -121,8 +121,12 @@ const progressSlider = document.getElementById("progressSlider");
 const buttonIntroMapButton =  document.getElementById("start-button")
 const controls =  document.getElementById("controls")
 
-document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
-document.querySelector("#skip-intro").addEventListener('click', launchMap, false);
+window.onload = function() {
+  document.querySelector("#start-intro-button").innerHTML = "Lancer l'intro"
+  document.querySelector("#start-intro-button").addEventListener('click', launchIntro, false);
+  document.querySelector("#skip-intro").style.visibility = "visible"
+  document.querySelector("#skip-intro").addEventListener('click', launchMap, false);
+};
 buttonIntroMapButton.addEventListener('click', function(){
   // gsap.killTweensOf("#carnet");
   masterTimeline.kill();

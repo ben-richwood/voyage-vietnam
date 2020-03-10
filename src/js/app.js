@@ -24,7 +24,7 @@ function loadApp() {
 			inclination: 50,
 			duration: 1200,
 			page: 2, // initial page
-			pages: 14,
+			pages: 32,
 			gradients: true,
 			autoCenter: false
 	});

@@ -12,6 +12,7 @@
 	<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
 	<link rel="stylesheet" href="./css/basic.css">
 	<style>
+		html{font-size: 14px;}
 		body { margin: 0; padding: 0; }
 		#map { position: absolute; top: 0; bottom: 0; width: 100%; height:100%; }
 		#controls{
@@ -52,6 +53,37 @@
 			color: white;
 			background-image: url(./img/button-card-black.png);
 		}
+		#skip-intro{visibility: hidden}
+		#particles {
+	    width: 100%;
+	    height: 100%;
+	    position: relative;
+	    display: block;
+	    z-index: 203;
+	    pointer-events: none;
+		}
+		#carnet {
+	    position: absolute;
+	    top: 0;
+	    transform-origin: 0 0;
+	    left: 0;
+	    opacity: 1;
+	    z-index: 101;
+	    width: 100%;
+	    height: 100%;
+		}
+		.bg{
+			perspective: 4em;
+			background-color:black;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			z-index: 201;
+			-webkit-mask: url(./img/ink-mask.png);
+			/*-webkit-mask: url(https://veuwer.com/i/3fxb.png);*/
+		}
 	</style>
 
 	<meta name="viewport" content="width = 1050, user-scalable = no" />
@@ -77,7 +109,7 @@
 	<div class="bg"></div>
 	<div id="start-intro">
 		<div style="transform:translate3d(0,0,0);z-index:201">
-			<button type="button" id="start-intro-button" class="button-special" name="button">Lancer l'intro</button>
+			<button type="button" id="start-intro-button" class="button-special" name="button">Chargement</button>
 			<a href="#" id="skip-intro">Passer intro (21 sec)</a>
 		</div>
 	</div>
@@ -129,10 +161,10 @@
 	<div id="cardDeck" class="ui-widget-content">
 	  <div class="card">
 			<picture>
-        <!-- <source type="image/webp" srcset="./pages/1.webp">
-        <source type="image/jp2" srcset="./pages/1.jp2"> -->
-        <source type="image/jp2" srcset="./img/pics/IMAG0873.jpg">
-        <img src="./img/pics/IMAG0873.jpg" alt="Img 1">
+        <!-- <source type="image/jp2" srcset="./pages/1.jp2"> -->
+					<source type="image/webp" srcset="./img/pics/three_pic.webp">
+        <source type="image/jp2" srcset="./img/pics/three_pic.jpg">
+        <img src="./img/pics/IMAG087three_pic.jpg" alt="Img 1">
       </picture>
 	  </div>
 	  <div class="card">
@@ -187,6 +219,8 @@
 						<li data-page="24">??<span>16 juin</span></li>
 						<li data-page="26">Ba Bể Lake<span>17 juin</span></li>
 						<li data-page="28">Retour à Hanoi<span>18 - 19 juin</span></li>
+						<li data-page="30">Da Nang<span>20 juin</span></li>
+						<li data-page="32">My Son et Hoi An<span>21 juin</span></li>
 					</ul>
 				</div>
 			</div>

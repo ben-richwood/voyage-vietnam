@@ -29,6 +29,7 @@
     <h1>Sur la route de Ha Giang</h1>
     <em>8 juin</em>
     <p>Nous quittons Ninh Binh pour rejoindre Ha Giang d'où part la boucle septentrionale. Nous roulons toute la journée, en comptant les quelques poses café et repas. La température se rafraîchit à mesure que l'on monte. Nous arrivons au crépuscule et nous sortons de la route où nous trouvons un terrain de foot, où les gamins en train de jouer nous amènent à une auberge en dehors de la route principale.</p>
+    <button class="button-images" data-card="10">Voir les photos</button>
   </div>
 </div>
 
@@ -56,7 +57,7 @@
       <img src="./img/pics/three.png" alt="Img 1" class="no-frame">
     </picture>
     <p>En fin d'après midi, un chemin de terre sort de la route et nous invite à gravir la montagne. On s'arrête en surplomb de la vallée, à côté d'un arbre qui restera mythique. La nuit nous presse, et nous décidons de poursuivre dans l'inconnu. Nous arrivons dans un village, où le signal GSM ne passe pas ; il nous est alors impossible de traduire des messages. Le village nous entoure rapidement et nous essayons de communiquer. Après plusieurs tentatives, il nous faut rebrousser chemin. La nuit tombe vite, et la route de gravier à flanc de ontagne dans le noir devient d'autant menaçant. Nous retrouvons la route sans encombre, et poursuivont jusqu'à un hostel.</p>
-    <button class="button-images" data-card="10">Voir les photos</button>
+    <!-- <button class="button-images" data-card="10">Voir les photos</button> -->
   </div>
 </div>
 <div class="left-page"></div>
@@ -67,6 +68,7 @@
     <p>On prends la route au matin, parsemés de café réglementaire au passage de cols. Poussé par l'aventure, on emprunte un chemin de terre qui semble rejoindre la route principale sur les cartes. On posera les bécanes pour continuer à pied et escalader une colline.</p>
     <p>Dnog Van nous accueille en fin d'après midi ; on trouve rapidement un café pour y chercher un hostel sur internet. On y pose nos affaires et partons traverser les rizières à pied. La ville est un amoncellement de bordel urbain encerclé par les rizières et les montagnes.</p>
     <p>On passe prendre des bières que l'on déguste sur le toit, à la lumière des néon de l'hôtel.</p>
+    <button class="button-images" data-card="16">Voir les photos</button>
   </div>
 </div>
 
@@ -91,6 +93,7 @@
     <em>14 juin</em>
     <p>Nous passons à l'hopital - plus haut dans la rue de notre hôtel. On prend alors la direction de Cao Bang. On passera la journée sur le scooter, entre pause repas et cafés. Cao Bang est la plus grande ville que l'on croise depuis le début du tour moto ; il nous faut tourner un peu pour trouver un café d'où chercher notre hôtel pour la nuit. On trouve une auberge non loin du fleuve. On y rencontre un couple sud africain / sibérien en train d'arnacher leur propre Honda XR.</p>
     <p>On file manger car la nuit tombe. On tombe pendant un match de Ligue 1, et un groupe de vietnamien nous rejoint pour trinquer et prendre des selfies.</p>
+    <button class="button-images" data-card="20">Voir les photos</button>
   </div>
 </div>
 
@@ -142,5 +145,26 @@
     <p>Nous ne sommes plus très loin de Hanoi. Il est temps de terminer la boucle, et de rejoindre la capitale. On s'arrêtera dans un garage Honda pour remettre les motos en état - changer l'huile, remettre la garde du frein qui bloque la poingné de frein, tordre le selecteur de vitesse et réaligner la fourche de la moto légrèment désaxée.</p>
     <p>On s'arrête au golf qui donne sur le lac de Hanoi - en tong, Tshirts dégueulasses et shorts troués. On reprendra le même Pillow Hotel qu'à notre arrivé.</p>
     <p>On prendra le bus de nuit pour rejoindre Da Nang.</p>
+    <button class="button-images" data-card="28">Voir les photos</button>
+  </div>
+</div>
+
+<div class="left-page"></div>
+<div class="right-page book-content">
+  <div class="inner-page">
+    <h1>Da Nang</h1>
+    <em>20 juin</em>
+    <p>Nous descendons à Da Nang en bus de nuit. On rejoint rapidement l'hostel où on s'attarde pour prendre une douche attendue, et nous louons un scoot pour faire le tour de la ville.</p>
+    <p>On commence par la plage, déserte en début d'preèm. On se baigne et se pavasse sur la terrasse d'un resto. On rempile, et nous voilà sur le chemin de la pointe de l'île qui domine la ville. On tombe en rade d'essence, au beau milieu de la presqu'ile. Nous poussons le scoot jusqu'à l'intercontinental, non loin de là. Le personnel nous indique un mec un peu plus bas qui vend de l'essence. Nous voilà reparti de plus belle. Nous atteignons finalement le sommet après une route en lacet devenue chemin de terre battue. Nous redescendons rapidement et nous arrêtons dans une lieu de reception de mariage en réfection.</p>
+    <p>Retour en ville pour un billard et dodo.</p>
+  </div>
+</div>
+<div class="left-page"></div>
+<div class="right-page book-content">
+  <div class="inner-page">
+    <h1>My Son & Hoi An</h1>
+    <em>22 juin</em>
+    <p>Levé de bonne heure pour aller explore My Son, le "Angkor Vat" du Vietnam. Le site est réduit, et très vite envahi par des chinois bruillants frillant de selfies.</p>
+    <p>On quitte le site, et repassons par Hoi An, où nous nous balladons à pied dans le quartier historique. Nous nous arrêtons dans un bar à la gloire de Geroges Brassens, où le proprio ne se lasse pas de nous faire écouter toutes les variantes de ses chansons les plus célèbres en russes ou créoles.</p>
   </div>
 </div>
