@@ -24,7 +24,7 @@ export function initMap() {
   map = new mapboxgl.Map({
   container: 'map',
   // style: 'mapbox://styles/richwood/cjcrz5zbq1tkl2rpdctydxeqf',
-  style: 'mapbox://styles/richwood/cjl2gj54g0zdg2sqn56voruef',
+  style: 'mapbox://styles/richwood/ck7va87us0boh1it63oj3tbqy',
   center: [105.854504, 21.033133],
   maxZoom: 16,
   pitch: 30,
