@@ -2,7 +2,8 @@ node_modules
 turnjs.zip
 turnjs4
 .DS_Store
-**/*.psd
-**/*.psb
+*.psd
+*.psb
 PSD/
-**/*.mp4
+*.mp4
+*.ai
