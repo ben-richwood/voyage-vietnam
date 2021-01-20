@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "displacejs": "^1.4.1",
-    "gsap": "^3.1.1",
+    "gsap": "^3.6.0",
     "imports-loader": "^0.8.0",
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
